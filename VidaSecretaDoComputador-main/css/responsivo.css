@@ -1,0 +1,134 @@
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+
+
+@media(max-width:900px){
+
+
+
+    .hud {
+
+
+        flex-direction:column;
+
+
+    }
+
+
+
+    .barra-container {
+
+
+        width:100%;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+@media(max-width:600px){
+
+
+
+    .card-inicial {
+
+
+        padding:30px 20px;
+
+
+    }
+
+
+
+
+    .card-inicial h1 {
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+    .container-mapa h1 {
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+    .card-personagem-jogo {
+
+
+        padding:25px;
+
+
+    }
+
+
+
+
+    .card-personagem-jogo h1 {
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+
+    .imagem-personagem {
+
+
+        width:170px;
+
+
+        height:170px;
+
+
+    }
+
+
+
+
+    .certificado {
+
+
+        padding:30px 20px;
+
+
+    }
+
+
+
+
+    .certificado h1 {
+
+
+        font-size:40px;
+
+
+    }
+
+
+
+}

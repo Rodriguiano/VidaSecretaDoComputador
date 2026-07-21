@@ -1,0 +1,220 @@
+
+/* =====================================================
+   CERTIFICADO FINAL
+===================================================== */
+
+
+
+.container-certificado {
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    padding:30px;
+
+
+}
+
+
+
+
+
+.certificado {
+
+
+    width:100%;
+
+
+    max-width:700px;
+
+
+
+    text-align:center;
+
+
+
+    padding:50px;
+
+
+
+    border-radius:40px;
+
+
+
+    background:
+
+        rgba(255,255,255,0.15);
+
+
+
+    backdrop-filter:
+
+        blur(20px);
+
+
+
+    border:
+
+        2px solid rgba(255,255,255,0.3);
+
+
+
+    animation:
+
+        aparecer 1s ease;
+
+
+
+}
+
+
+
+
+
+.trofeu {
+
+
+    font-size:90px;
+
+
+    animation:
+
+        pulsar 2s infinite;
+
+
+}
+
+
+
+
+
+.certificado h1 {
+
+
+    font-size:55px;
+
+
+    margin:20px 0;
+
+
+}
+
+
+
+.certificado h2 {
+
+
+    font-size:30px;
+
+
+}
+
+
+
+
+
+.mensagem-certificado {
+
+
+    margin:30px 0;
+
+
+    line-height:1.8;
+
+
+    font-size:18px;
+
+
+}
+
+
+
+
+
+.xp-final {
+
+
+    margin:30px auto;
+
+
+    padding:20px;
+
+
+
+    width:250px;
+
+
+
+    border-radius:25px;
+
+
+
+    background:
+
+        rgba(0,0,0,0.2);
+
+
+}
+
+
+
+.xp-final strong {
+
+
+    display:block;
+
+
+    font-size:45px;
+
+
+}
+
+
+
+
+
+
+.selo {
+
+
+    margin:25px auto;
+
+
+    padding:20px;
+
+
+    width:220px;
+
+
+
+    border-radius:30px;
+
+
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #facc15,
+            #f97316
+        );
+
+
+
+    color:white;
+
+
+    font-weight:800;
+
+
+}

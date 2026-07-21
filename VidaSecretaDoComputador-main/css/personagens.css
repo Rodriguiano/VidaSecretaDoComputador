@@ -1,0 +1,419 @@
+/* ===========================
+   GRID PERSONAGENS
+=========================== */
+
+
+.grid-personagens {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(230px,1fr)
+        );
+
+
+    gap:30px;
+
+
+}
+
+
+
+
+
+/* ===========================
+   CARDS
+=========================== */
+
+
+.card-personagem {
+
+
+    position:relative;
+
+
+    padding:30px 20px;
+
+
+    cursor:pointer;
+
+
+    background:
+
+        rgba(255,255,255,0.12);
+
+
+
+    border-radius:30px;
+
+
+    border:
+
+        1px solid rgba(255,255,255,0.25);
+
+
+
+    backdrop-filter:
+
+        blur(12px);
+
+
+
+    transition:
+
+        0.35s;
+
+
+
+    animation:
+
+        aparecer 0.7s ease;
+
+
+
+}
+
+
+
+
+
+.card-personagem:hover {
+
+
+    transform:
+
+        translateY(-12px);
+
+
+
+    box-shadow:
+
+        0 20px 40px rgba(0,0,0,0.35);
+
+
+}
+
+
+
+
+
+.card-personagem img {
+
+
+    width:140px;
+
+
+    height:140px;
+
+
+    object-fit:contain;
+
+
+    transition:
+
+        0.3s;
+
+
+}
+
+
+
+
+
+.card-personagem:hover img {
+
+
+    transform:
+
+        scale(1.12)
+        rotate(3deg);
+
+
+}
+
+
+
+
+
+.card-personagem h2 {
+
+
+    margin-top:15px;
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+.card-personagem p {
+
+
+    margin:15px 0;
+
+
+    opacity:0.85;
+
+
+}
+
+
+
+
+
+.status {
+
+
+    display:inline-block;
+
+
+    padding:8px 18px;
+
+
+    border-radius:50px;
+
+
+    background:
+
+        rgba(255,255,255,0.15);
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+
+
+/* ===========================
+   PERSONAGENS BLOQUEADOS
+=========================== */
+
+
+.bloqueado {
+
+
+    opacity:0.55;
+
+
+    cursor:not-allowed;
+
+
+}
+
+
+
+.bloqueado:hover {
+
+
+    transform:none;
+
+
+}
+
+
+
+
+
+/* ===========================
+   CHEFE FINAL
+=========================== */
+
+
+.chefe {
+
+
+    border:
+
+        2px solid rgba(239,68,68,0.5);
+
+
+}
+
+
+
+.chefe img {
+
+
+    filter:
+
+        drop-shadow(
+            0 0 15px red
+        );
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   TELA DE PERSONAGEM
+===================================================== */
+
+
+
+.container-personagem {
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    padding:30px;
+
+
+}
+
+
+
+
+
+.card-personagem-jogo {
+
+
+    width:100%;
+
+
+    max-width:750px;
+
+
+    text-align:center;
+
+
+    padding:40px;
+
+
+
+    background:
+
+        rgba(255,255,255,0.12);
+
+
+
+    backdrop-filter:
+
+        blur(15px);
+
+
+
+    border-radius:35px;
+
+
+    border:
+
+        1px solid rgba(255,255,255,0.2);
+
+
+
+    box-shadow:
+
+        0 20px 50px rgba(0,0,0,0.35);
+
+
+
+}
+
+
+
+
+
+
+.imagem-personagem {
+
+
+    width:220px;
+
+
+    height:220px;
+
+
+    object-fit:contain;
+
+
+    animation:
+
+        flutuarPersonagem 3s infinite;
+
+
+}
+
+
+
+
+
+@keyframes flutuarPersonagem {
+
+
+    0%,100% {
+
+
+        transform:
+
+            translateY(0);
+
+
+    }
+
+
+    50% {
+
+
+        transform:
+
+            translateY(-15px);
+
+
+    }
+
+
+}
+
+
+
+
+
+.card-personagem-jogo h1 {
+
+
+    font-size:40px;
+
+
+    margin:20px;
+
+
+}
+
+.card-personagem:hover {
+
+
+    animation:
+
+        brilho 1.5s infinite;
+
+
+}

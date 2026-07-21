@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personagem - Vida Secreta do Computador</title>
+
+
+    <!-- Fonte Poppins -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+
+</head>
+
+
+<body class="pagina-personagem">
+
+
+    <!-- Fundo -->
+
+    <div class="fundo-gradiente"></div>
+
+
+
+    <!-- ===========================
+         ÁREA PRINCIPAL
+    ============================ -->
+
+
+    <main class="container-personagem">
+
+
+
+        <section class="card-personagem-jogo">
+
+
+
+            <!-- Imagem -->
+
+            <img
+                id="imagemPersonagem"
+                class="imagem-personagem"
+                src=""
+                alt="Personagem">
+
+
+
+
+
+            <!-- Nome -->
+
+            <h1 id="nomePersonagem">
+
+            </h1>
+
+
+
+
+
+            <!-- Caixa de diálogo -->
+
+            <div class="caixa-dialogo">
+
+
+                <div class="icone-dialogo">
+
+                    💬
+
+                </div>
+
+
+
+                <p id="textoDialogo">
+
+                </p>
+
+
+
+
+                <button
+                    id="btnContinuarDialogo"
+                    class="botao-principal">
+
+                    Continuar
+
+                </button>
+
+                <button
+                    id="btnCuriosidade"
+                    class="escondido">
+                    Curiosidade
+                </button>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <!-- Curiosidade -->
+
+            <div
+                id="areaCuriosidade"
+                class="area-info escondido">
+
+
+                <h2>
+
+                    💡 Curiosidade
+
+                </h2>
+
+
+                <p id="textoCuriosidade">
+
+                </p>
+
+
+                <button
+                    id="btnIniciarQuiz"
+                    class="botao-principal">
+
+
+                    Fazer Missão
+
+
+                </button>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- QUIZ -->
+
+            <div
+                id="areaQuiz"
+                class="area-quiz escondido">
+
+
+
+                <h2>
+
+                    🎯 Missão
+
+                </h2>
+
+
+
+                <p id="perguntaQuiz">
+
+                </p>
+
+
+
+
+
+                <div
+                    id="alternativasQuiz"
+                    class="alternativas">
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- Resultado -->
+
+            <div
+                id="areaResultado"
+                class="area-info escondido">
+
+
+                <h2 id="tituloResultado">
+
+                </h2>
+
+
+                <p id="textoResultado">
+
+                </p>
+
+
+
+                <button
+                    id="btnVoltarMapa"
+                    class="botao-secundario">
+
+
+                    🗺️ Voltar ao Mapa
+
+
+                </button>
+
+
+            </div>
+
+
+
+
+        </section>
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+    <!-- Botão voltar caso queira sair -->
+
+    <button
+        onclick="voltarMapa()"
+        class="botao-flutuante">
+
+
+        ← Mapa
+
+
+    </button>
+
+
+
+
+
+
+
+    <!-- JavaScript -->
+
+    <script src="../js/som.js"></script>
+    <script src="../js/util.js"></script>
+    <script src="../js/progresso.js"></script>
+    <script src="../js/personagens.js"></script>
+    <script src="../js/dialogos.js"></script>
+    <script src="../js/quiz.js"></script>
+
+
+</body>
+
+
+</html>

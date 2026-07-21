@@ -1,0 +1,64 @@
+/* =====================================================
+   MAPA DO JOGO
+===================================================== */
+
+
+
+.pagina-mapa {
+
+    padding-bottom: 40px;
+
+}
+
+
+/* ===========================
+   CONTAINER MAPA
+=========================== */
+
+
+
+.container-mapa {
+
+
+    width:90%;
+
+
+    max-width:1200px;
+
+
+    margin:auto;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.container-mapa h1 {
+
+
+    font-size:42px;
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+.subtitulo {
+
+
+    opacity:0.85;
+
+
+    margin-bottom:40px;
+
+
+}
+
+
+

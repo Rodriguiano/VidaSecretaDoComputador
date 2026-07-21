@@ -1,0 +1,65 @@
+/* ===========================
+   FUNDO
+=========================== */
+
+
+.fundo-gradiente {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+
+    background:
+        linear-gradient(
+            135deg,
+            #0c0516,
+            #1c1042,
+            #5b1dd8
+        );
+
+
+}
+
+
+/* ===========================
+   CONTAINERS
+=========================== */
+
+
+.container {
+
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+
+}
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+
+footer {
+
+
+    text-align:center;
+
+
+    padding:20px;
+
+
+    opacity:0.7;
+
+
+}

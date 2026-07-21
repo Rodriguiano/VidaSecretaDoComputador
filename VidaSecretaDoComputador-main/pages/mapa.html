@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mapa - Vida Secreta do Computador</title>
+
+    <!-- Fonte Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body class="pagina-mapa">
+
+
+    <!-- Fundo -->
+    <div class="fundo-gradiente"></div>
+
+
+    <!-- ===============================
+         HUD DO JOGADOR
+    ================================ -->
+
+    <header class="hud">
+
+
+        <div class="hud-item">
+
+            <span>
+                ⭐ XP
+            </span>
+
+            <strong id="xpJogador">
+                0
+            </strong>
+
+        </div>
+
+
+
+        <div class="hud-item">
+
+            <span>
+                🎯 Missões
+            </span>
+
+            <strong id="missoesConcluidas">
+                0/8
+            </strong>
+
+        </div>
+
+
+
+        <div class="barra-container">
+
+
+            <div class="barra-texto">
+
+                Progresso da Missão
+
+            </div>
+
+
+            <div class="barra-progresso">
+
+
+                <div
+                    id="barraXP"
+                    class="barra-preenchida">
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+
+
+
+
+    <!-- ===============================
+         TÍTULO
+    ================================ -->
+
+
+    <main class="container-mapa">
+
+
+        <h1>
+
+            🖥️ Mapa do Computador
+
+        </h1>
+
+
+        <p class="subtitulo">
+
+            Explore cada habitante do sistema
+            e prepare-se para enfrentar o vírus.
+
+        </p>
+
+
+
+
+
+        <!-- ===============================
+             CARDS DOS PERSONAGENS
+        ================================ -->
+
+
+        <section
+            id="listaPersonagens"
+            class="grid-personagens">
+
+
+
+            <!-- CPU -->
+
+            <article
+                class="card-personagem"
+                data-personagem="cpu">
+
+
+                <img
+                    src="../img/personagens/cpu.png"
+                    alt="CPU">
+
+
+                <h2>
+                    CPU
+                </h2>
+
+
+                <p>
+                    O cérebro do computador.
+                </p>
+
+
+                <span class="status">
+
+                    🔓 Disponível
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+            <!-- RAM -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="ram">
+
+
+                <img
+                    src="../img/personagens/ram.png"
+                    alt="Memória RAM">
+
+
+                <h2>
+                    RAM
+                </h2>
+
+
+                <p>
+                    A memória temporária.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+            <!-- SSD -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="ssd">
+
+
+                <img
+                    src="../img/personagens/ssd.png"
+                    alt="SSD">
+
+
+                <h2>
+                    SSD
+                </h2>
+
+
+                <p>
+                    Guarda seus arquivos.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+            <!-- GPU -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="gpu">
+
+
+                <img
+                    src="../img/personagens/gpu.png"
+                    alt="Placa de vídeo">
+
+
+                <h2>
+                    GPU
+                </h2>
+
+
+                <p>
+                    Cria imagens e gráficos.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+
+            <!-- PLACA MÃE -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="placamae">
+
+
+                <img
+                    src="../img/personagens/placamae.png"
+                    alt="Placa mãe">
+
+
+                <h2>
+                    Placa-mãe
+                </h2>
+
+
+                <p>
+                    Conecta tudo.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+
+
+            <!-- FIREWALL -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="firewall">
+
+
+                <img
+                    src="../img/personagens/firewall.png"
+                    alt="Firewall">
+
+
+                <h2>
+                    Firewall
+                </h2>
+
+
+                <p>
+                    Protege o sistema.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+
+
+            <!-- INTERNET -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="internet">
+
+
+                <img
+                    src="../img/personagens/internet.png"
+                    alt="Internet">
+
+
+                <h2>
+                    Internet
+                </h2>
+
+
+                <p>
+                    Conecta computadores.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+
+
+            <!-- ARQUIVOS -->
+
+
+            <article
+                class="card-personagem bloqueado"
+                data-personagem="arquivos">
+
+
+                <img
+                    src="../img/personagens/arquivos.png"
+                    alt="Arquivos">
+
+
+                <h2>
+                    Arquivos
+                </h2>
+
+
+                <p>
+                    Organiza informações.
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+
+
+
+
+            <!-- VÍRUS FINAL -->
+
+
+            <article
+                class="card-personagem chefe bloqueado"
+                data-personagem="virus">
+
+
+                <img
+                    src="../img/personagens/virus.png"
+                    alt="Vírus">
+
+
+                <h2>
+
+                    Vírus Misterioso
+
+                </h2>
+
+
+                <p>
+
+                    O inimigo final.
+
+                </p>
+
+
+                <span class="status">
+
+                    🔒 Bloqueado
+
+                </span>
+
+
+            </article>
+
+
+
+        </section>
+
+
+
+    </main>
+
+
+
+
+
+    <!-- Botão voltar -->
+
+    <button
+        onclick="voltarInicio()"
+        class="botao-secundario">
+
+        🏠 Voltar
+
+    </button>
+
+
+
+
+
+
+    <!-- JavaScript -->
+
+    <script src="../js/som.js"></script>
+    <script src="../js/util.js"></script>
+    <script src="../js/progresso.js"></script>
+    <script src="../js/mapa.js"></script>
+    <script src="../js/virus.js"></script>
+
+
+</body>
+
+</html>
