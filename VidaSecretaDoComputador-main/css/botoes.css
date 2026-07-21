@@ -28,28 +28,20 @@
     font-weight: 700;
 
 
-    color: white;
-
-
+    color: var(--btn-texto);
 
     background:
-
         linear-gradient(
             135deg,
-            #22c55e,
-            #16a34a
+            var(--btn-principal-grad-1),
+            var(--btn-principal-grad-2)
         );
 
-
-
     transition:
-
         0.3s;
 
-
     box-shadow:
-
-        0 10px 25px rgba(0,0,0,0.25);
+        0 10px 25px var(--card-shadow);
 
 
 
@@ -92,28 +84,20 @@
     font-weight: 700;
 
 
-    color: white;
-
-
+    color: var(--btn-texto);
 
     background:
-
         linear-gradient(
             135deg,
-            #22c55e,
-            #16a34a
+            var(--btn-principal-grad-1),
+            var(--btn-principal-grad-2)
         );
 
-
-
     transition:
-
         0.3s;
 
-
     box-shadow:
-
-        0 10px 25px rgba(0,0,0,0.25);
+        0 10px 25px var(--card-shadow);
 
 
 
@@ -151,29 +135,13 @@
     font-weight: 700;
 
 
-    background:
-
-        rgba(255,255,255,0.15);
-
-
-    color:white;
-
-
+    background: var(--btn-secundario-bg);
+    color: var(--texto-principal);
     backdrop-filter: blur(10px);
-
-
 }
 
-
-
 .botao-secundario:hover {
-
-
-    background:
-
-        rgba(255,255,255,0.3);
-
-
+    background: var(--btn-secundario-hover);
 }
 
 
@@ -296,53 +264,63 @@
 }
 
 /* =====================================================
-   BOTÃO DE SOM FLUTUANTE
+   CONTROLES GLOBAIS (SOM, TEMA)
 ===================================================== */
 
-.botao-som-flutuante {
+.controles-globais {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 10000;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-controle-global {
     padding: 10px 18px;
     border-radius: 50px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    background: rgba(15, 23, 42, 0.75);
-    color: #38bdf8;
+    border: 2px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--texto-destaque);
     font-weight: 700;
     font-size: 14px;
     font-family: inherit;
     cursor: pointer;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px var(--card-shadow);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.botao-som-flutuante:hover {
+.btn-controle-global:hover {
     transform: translateY(-2px) scale(1.05);
-    border-color: #38bdf8;
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+    border-color: var(--texto-destaque);
+    box-shadow: 0 10px 25px var(--card-shadow-hover);
+    background: var(--card-bg-hover);
 }
 
-.botao-som-flutuante.som-desativado {
-    color: #94a3b8;
-    border-color: rgba(255, 255, 255, 0.1);
-    background: rgba(15, 23, 42, 0.6);
+.btn-controle-global.som-desativado {
+    color: var(--texto-secundario);
+    border-color: var(--card-border);
+    background: var(--card-bg);
 }
 
-.botao-som-flutuante.som-desativado:hover {
-    color: #f43f5e;
-    border-color: #f43f5e;
-    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.3);
+.btn-controle-global.som-desativado:hover {
+    color: var(--erro-border);
+    border-color: var(--erro-border);
+    box-shadow: 0 10px 25px var(--erro-shadow);
 }
 
 @media (max-width: 600px) {
-    .botao-som-flutuante {
+    .controles-globais {
         top: 12px;
         right: 12px;
+        gap: 6px;
+    }
+    .btn-controle-global {
         padding: 8px 12px;
         font-size: 12px;
     }

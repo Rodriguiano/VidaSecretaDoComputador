@@ -1,300 +1,91 @@
-
-
-
-
-
-
-
 /* =====================================================
-   FINAL DO VÍRUS
+   BATALHA FINAL CONTRA O VÍRUS (DESAFIO EXPANDIDO)
+   Vida Secreta do Computador
 ===================================================== */
-
-
-function verificarFinal(){
-
-
-
-    const pagina =
-
-    window.location.pathname;
-
-
-
-    if(
-
-    pagina.includes(
-        "personagem.html"
-    )
-
-    &&
-
-    personagemAtual
-
-    &&
-
-    personagemAtual.chefe
-
-    ){
-
-
-
-        if(
-
-        dadosJogo.concluidos.length
-
-        ===
-
-        configuracaoJogo.totalMissoes
-
-        ){
-
-
-
-            // aqui futuramente pode entrar
-            // batalha final com 5 perguntas
-
-
-
-        }
-
-
-
-    }
-
-
-
-}
-
-
-
-
-
-/* =====================================================
-   BATALHA FINAL CONTRA O VÍRUS
-===================================================== */
-
 
 let perguntaChefeAtual = 0;
-
 let acertosChefe = 0;
 
+function verificarFinal() {
+    const pagina = window.location.pathname;
 
-
-
-function iniciarBatalhaVirus(){
-
-    if (typeof tocarVirus === "function") tocarVirus();
-
-    perguntaChefeAtual = 0;
-
-    acertosChefe = 0;
-
-
-    mostrarPerguntaVirus();
-
-
+    if (pagina.includes("personagem.html") && personagemAtual && personagemAtual.chefe) {
+        if (dadosJogo.concluidos.length === configuracaoJogo.totalMissoes) {
+            // Chefe liberado
+        }
+    }
 }
 
+function iniciarBatalhaVirus() {
+    if (typeof tocarVirus === "function") tocarVirus();
+    perguntaChefeAtual = 0;
+    acertosChefe = 0;
+    mostrarPerguntaVirus();
+}
 
-
-
-
-
-function mostrarPerguntaVirus(){
-
-
+function mostrarPerguntaVirus() {
     const chefe = personagens.virus;
+    const listaPerguntas = chefe.perguntasChefe;
+    const perguntaAtual = listaPerguntas[perguntaChefeAtual];
 
+    const perguntaEl = document.getElementById("perguntaQuiz");
+    const area = document.getElementById("alternativasQuiz");
 
-    const perguntaAtual =
+    if (!perguntaEl || !area) return;
 
-    chefe.perguntasChefe[
-        perguntaChefeAtual
-    ];
-
-
-
-    document.getElementById(
-        "perguntaQuiz"
-    ).textContent =
-
-    perguntaAtual.pergunta;
-
-
-
-    const area =
-
-    document.getElementById(
-        "alternativasQuiz"
-    );
-
-
+    perguntaEl.innerHTML = `<span class="badge-pergunta badge-chefe">⚔️ Desafio Chefe ${perguntaChefeAtual + 1} de ${listaPerguntas.length}</span><br>${perguntaAtual.pergunta}`;
 
     area.innerHTML = "";
 
+    perguntaAtual.alternativas.forEach((alternativa, index) => {
+        const botao = document.createElement("button");
+        botao.className = "alternativa alternativa-chefe";
+        botao.textContent = alternativa;
 
-
-
-    perguntaAtual.alternativas
-
-    .forEach((alternativa,index)=>{
-
-
-        const botao =
-
-        document.createElement(
-            "button"
-        );
-
-
-
-        botao.className =
-        "alternativa";
-
-
-
-        botao.textContent =
-        alternativa;
-
-
-
-
-        botao.onclick = ()=>{
-
-
-            responderVirus(index);
-
-
+        botao.onclick = () => {
+            responderVirus(index, perguntaAtual.correta, listaPerguntas.length, botao, area);
         };
 
-
-
         area.appendChild(botao);
-
-
-
     });
-
-
-
 }
 
+function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, botaoClicado, containerArea) {
+    const botoes = containerArea.querySelectorAll(".alternativa");
+    botoes.forEach(b => b.disabled = true);
 
-
-
-
-
-function responderVirus(resposta){
-
-
-
-    const perguntaAtual =
-
-    personagens.virus.perguntasChefe[
-        perguntaChefeAtual
-    ];
-
-
-
-    if(
-
-    resposta === perguntaAtual.correta
-
-    ){
-
+    if (respostaEscolhida === respostaCorreta) {
+        botaoClicado.classList.add("correta");
         if (typeof tocarSucesso === "function") tocarSucesso();
-
         acertosChefe++;
-
-
-    }
-
-    else{
-
+    } else {
+        botaoClicado.classList.add("incorreta");
+        if (botoes[respostaCorreta]) {
+            botoes[respostaCorreta].classList.add("correta");
+        }
         if (typeof tocarErro === "function") tocarErro();
-
     }
 
+    setTimeout(() => {
+        perguntaChefeAtual++;
 
-
-
-
-
-    perguntaChefeAtual++;
-
-
-
-
-
-    if(
-
-    perguntaChefeAtual <
-
-    personagens.virus.perguntasChefe.length
-
-    ){
-
-
-        mostrarPerguntaVirus();
-
-
-
-    }
-
-    else{
-
-
-        finalizarBatalhaVirus();
-
-
-    }
-
-
-
+        if (perguntaChefeAtual < totalPerguntas) {
+            mostrarPerguntaVirus();
+        } else {
+            finalizarBatalhaVirus();
+        }
+    }, 950);
 }
 
+function finalizarBatalhaVirus() {
+    const totalPerguntas = personagens.virus.perguntasChefe.length;
 
-
-
-
-
-function finalizarBatalhaVirus(){
-
-
-
-    if(
-
-    acertosChefe === 5
-
-    ){
-
+    if (acertosChefe === totalPerguntas) {
         if (typeof tocarVitoria === "function") tocarVitoria();
-
-        window.location.href =
-
-        "certificado.html";
-
-
-
-    }
-
-    else{
-
+        window.location.href = "certificado.html";
+    } else {
         if (typeof tocarErro === "function") tocarErro();
-
-        alert(
-
-        "O vírus escapou! Revise os componentes e tente novamente."
-
-        );
-
-
+        alert(`O Vírus Misterioso resistiu! Você acertou ${acertosChefe} de ${totalPerguntas} perguntas. Revise os componentes no mapa e tente novamente!`);
         voltarMapa();
-
-
     }
-
-
-
-
 }

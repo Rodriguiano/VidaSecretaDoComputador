@@ -1,0 +1,88 @@
+/* =====================================================
+   VARIÁVEIS DE TEMA (CLARO / ESCURO)
+===================================================== */
+
+:root {
+    /* TEMA ESCURO (PADRÃO) */
+    --bg-gradiente-1: #0c0516;
+    --bg-gradiente-2: #1c1042;
+    --bg-gradiente-3: #5b1dd8;
+    
+    --texto-principal: #ffffff;
+    --texto-secundario: #dddddd;
+    --texto-destaque: #38bdf8;
+    
+    --card-bg: rgba(15, 23, 42, 0.65);
+    --card-bg-hover: rgba(56, 189, 248, 0.18);
+    --card-border: rgba(255, 255, 255, 0.15);
+    --card-border-hover: #38bdf8;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: rgba(56, 189, 248, 0.25);
+    
+    --hud-bg: rgba(15, 8, 35, 0.75);
+    --hud-border: rgba(255, 255, 255, 0.2);
+    
+    --btn-principal-grad-1: #22c55e;
+    --btn-principal-grad-2: #16a34a;
+    --btn-texto: #ffffff;
+    
+    --btn-secundario-bg: rgba(255, 255, 255, 0.15);
+    --btn-secundario-hover: rgba(255, 255, 255, 0.3);
+    
+    --erro-bg: linear-gradient(135deg, #dc2626, #b91c1c);
+    --erro-border: #f87171;
+    --erro-shadow: rgba(248, 113, 113, 0.5);
+    
+    --sucesso-bg: linear-gradient(135deg, #059669, #047857);
+    --sucesso-border: #34d399;
+    --sucesso-shadow: rgba(52, 211, 153, 0.5);
+    
+    --badge-bg: linear-gradient(135deg, #0284c7, #0369a1);
+    
+    --particulas-cor: rgba(178, 162, 18, 0.684);
+}
+
+[data-theme="light"] {
+    /* TEMA CLARO */
+    --bg-gradiente-1: #e0f2fe;
+    --bg-gradiente-2: #bae6fd;
+    --bg-gradiente-3: #7dd3fc;
+    
+    --texto-principal: #0f172a;
+    --texto-secundario: #334155;
+    --texto-destaque: #0284c7;
+    
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-bg-hover: rgba(255, 255, 255, 0.95);
+    --card-border: rgba(2, 132, 199, 0.2);
+    --card-border-hover: #0284c7;
+    --card-shadow: rgba(2, 132, 199, 0.15);
+    --card-shadow-hover: rgba(2, 132, 199, 0.3);
+    
+    --hud-bg: rgba(255, 255, 255, 0.85);
+    --hud-border: rgba(2, 132, 199, 0.3);
+    
+    --btn-principal-grad-1: #10b981;
+    --btn-principal-grad-2: #059669;
+    --btn-texto: #ffffff;
+    
+    --btn-secundario-bg: rgba(2, 132, 199, 0.15);
+    --btn-secundario-hover: rgba(2, 132, 199, 0.25);
+    
+    --erro-bg: linear-gradient(135deg, #ef4444, #dc2626);
+    --erro-border: #b91c1c;
+    --erro-shadow: rgba(239, 68, 68, 0.4);
+    
+    --sucesso-bg: linear-gradient(135deg, #10b981, #059669);
+    --sucesso-border: #047857;
+    --sucesso-shadow: rgba(16, 185, 129, 0.4);
+    
+    --badge-bg: linear-gradient(135deg, #0ea5e9, #0284c7);
+    
+    --particulas-cor: rgba(2, 132, 199, 0.2);
+}
+
+/* Transições globais de tema para elementos visuais principais */
+body, .fundo-gradiente, .card-personagem, .area-quiz, .hud, .botao-principal, .botao-secundario, .alternativa, .janela-dialogo, .area-info, .certificado {
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}

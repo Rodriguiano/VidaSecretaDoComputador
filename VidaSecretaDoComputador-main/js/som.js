@@ -69,16 +69,24 @@ const somEngine = {
     criarBotaoSom() {
         if (document.getElementById("btnToggleSom")) return;
 
+        let container = document.getElementById('controles-globais');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'controles-globais';
+            container.className = 'controles-globais';
+            document.body.appendChild(container);
+        }
+
         const btn = document.createElement("button");
         btn.id = "btnToggleSom";
-        btn.className = "botao-som-flutuante";
+        btn.className = "btn-controle-global"; // Mudou a classe para padronizar com tema.js
         btn.setAttribute("aria-label", "Alternar som");
         btn.onclick = (e) => {
             e.stopPropagation();
             this.alternarSom();
         };
 
-        document.body.appendChild(btn);
+        container.appendChild(btn);
         this.atualizarBotaoSom();
     },
 

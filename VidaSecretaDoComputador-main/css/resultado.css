@@ -4,39 +4,16 @@
 
 
 .area-info {
-
-
     margin-top:30px;
-
-
     padding:30px;
-
-
     border-radius:30px;
-
-
-    background:
-
-        rgba(255,255,255,0.12);
-
-
-    backdrop-filter:
-
-        blur(10px);
-
-
-
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
 }
 
-
-
 .area-info h2 {
-
-
     font-size:30px;
-
-
     margin-bottom:20px;
-
-
+    color: var(--texto-destaque);
 }

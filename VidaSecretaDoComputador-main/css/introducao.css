@@ -17,7 +17,7 @@
 
     padding:30px;
 
-    background:rgba(15,8,35,.75);
+    background: var(--hud-bg);
     backdrop-filter:blur(4px);
 
     z-index:999;
@@ -46,32 +46,32 @@
     width: 100%;
     max-width: 750px;
 
-    background: rgba(28, 17, 60, 0);
+    background: var(--card-bg);
 
-    border: 2px solid #7b5cff;
+    border: 2px solid var(--card-border);
     border-radius: 20px;
 
-    box-shadow: 0 0 30px rgba(123,92,255,.35);
+    box-shadow: 0 0 30px var(--card-shadow);
 
     padding: 40px;
     text-align: center;
 }
 
 #introducao h2{
-    color:#fff;
+    color: var(--texto-destaque);
     font-size:2rem;
     margin-bottom:25px;
 }
 
 #introducao p{
-    color:#ddd;
+    color: var(--texto-secundario);
     font-size:1.1rem;
     line-height:1.8;
     margin-bottom:18px;
 }
 
 #introducao h3{
-    color:#6cff7d;
+    color: var(--btn-principal-grad-1);
     margin:30px 0;
     font-size:1.5rem;
 }

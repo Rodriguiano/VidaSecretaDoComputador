@@ -32,215 +32,78 @@
 
 
 .card-personagem {
-
-
     position:relative;
-
-
     padding:30px 20px;
-
-
     cursor:pointer;
-
-
-    background:
-
-        rgba(255,255,255,0.12);
-
-
-
+    background: var(--card-bg);
     border-radius:30px;
-
-
-    border:
-
-        1px solid rgba(255,255,255,0.25);
-
-
-
-    backdrop-filter:
-
-        blur(12px);
-
-
-
-    transition:
-
-        0.35s;
-
-
-
-    animation:
-
-        aparecer 0.7s ease;
-
-
-
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    transition: 0.35s;
+    animation: aparecer 0.7s ease;
 }
-
-
-
-
 
 .card-personagem:hover {
-
-
-    transform:
-
-        translateY(-12px);
-
-
-
-    box-shadow:
-
-        0 20px 40px rgba(0,0,0,0.35);
-
-
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px var(--card-shadow);
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
 }
-
-
-
-
 
 .card-personagem img {
-
-
     width:140px;
-
-
     height:140px;
-
-
     object-fit:contain;
-
-
-    transition:
-
-        0.3s;
-
-
+    transition: 0.3s;
 }
-
-
-
-
 
 .card-personagem:hover img {
-
-
-    transform:
-
-        scale(1.12)
-        rotate(3deg);
-
-
+    transform: scale(1.12) rotate(3deg);
 }
-
-
-
-
 
 .card-personagem h2 {
-
-
     margin-top:15px;
-
-
     font-size:25px;
-
-
+    color: var(--texto-destaque);
 }
-
-
-
-
 
 .card-personagem p {
-
-
     margin:15px 0;
-
-
     opacity:0.85;
-
-
+    color: var(--texto-secundario);
 }
-
-
-
-
 
 .status {
-
-
     display:inline-block;
-
-
     padding:8px 18px;
-
-
     border-radius:50px;
-
-
-    background:
-
-        rgba(255,255,255,0.15);
-
-
+    background: var(--btn-secundario-bg);
     font-size:14px;
-
-
+    color: var(--texto-principal);
 }
-
-
-
-
-
-
 
 /* ===========================
    PERSONAGENS BLOQUEADOS
-=========================== */
-
+===================================================== */
 
 .bloqueado {
-
-
     opacity:0.55;
-
-
     cursor:not-allowed;
-
-
 }
-
-
 
 .bloqueado:hover {
-
-
     transform:none;
-
-
+    box-shadow: none;
+    background: var(--card-bg);
+    border-color: var(--card-border);
 }
-
-
-
-
 
 /* ===========================
    CHEFE FINAL
-=========================== */
-
+===================================================== */
 
 .chefe {
-
-
-    border:
-
-        2px solid rgba(239,68,68,0.5);
-
-
+    border: 2px solid var(--erro-border);
 }
 
 

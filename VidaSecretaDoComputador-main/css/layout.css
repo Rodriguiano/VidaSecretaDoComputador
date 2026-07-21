@@ -15,9 +15,9 @@
     background:
         linear-gradient(
             135deg,
-            #0c0516,
-            #1c1042,
-            #5b1dd8
+            var(--bg-gradiente-1),
+            var(--bg-gradiente-2),
+            var(--bg-gradiente-3)
         );
 
 
