@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/30374969/README.md)
+
 # 🖥️ Vida Secreta do Computador
 
 > Um jogo web educativo e interativo sobre a arquitetura interna dos computadores e conceitos de tecnologia da informação.
