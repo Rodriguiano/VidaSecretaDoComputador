@@ -16,8 +16,14 @@ Ao concluir a jornada, o jogador é condecorado com o certificado de **Guardião
 
 - 🎮 **Gamificação & Sistema de XP**: Acompanhamento de progresso com barra de XP, missões concluídas e salvamento automático (`localStorage`).
 - 🤖 **Personagens Interativos**: Diálogos explicativos com CPU, RAM, SSD, GPU, Placa-mãe, Firewall, Internet e Arquivos.
+- 📚 **Personagens-professores**: Após cada conversa, o personagem organiza a aula em conceito, funcionamento, exemplo cotidiano e confusão comum, preparando o estudante para o desafio.
 - 💡 **Curiosidades Educativas**: Fatos interessantes sobre cada componente antes do desafio.
 - 🎯 **Quizzes de Fixação**: Perguntas e respostas interativas com feedback visual e sonoro imediato.
+- 🧠 **Taxonomia de Bloom**: Cada desafio progride de lembrança e compreensão para aplicação, análise, avaliação e resolução de problemas.
+- 🧭 **Trilha Adaptativa**: O mapa libera uma missão por vez e oferece dois estilos de estudo: explorador, com mais tempo e pistas, ou desafiador, com menos suporte.
+- 🏆 **Certificado de Conclusão**: Ao derrotar o Vírus Misterioso, o estudante recebe o certificado de Guardião do Computador com as competências desenvolvidas.
+- 📄 **Certificado personalizado**: O aluno informa seu nome, visualiza a data e pode usar “Baixar / imprimir PDF” para salvar o certificado pelo recurso de impressão do navegador.
+- 🔁 **Aprendizagem por Tentativa**: Cronômetro, dicas, feedback explicativo e nova tentativa orientam a revisão sem punir o erro.
 - 👾 **Batalha Final contra o Vírus**: Desafio de chefão com 5 perguntas abrangentes para testar o aprendizado total.
 - 🏆 **Certificado Digital de Conclusão**: Tela final de recompensa para os agentes digitais vitoriosos.
 - 🔊 **Sistema de Áudio Imersivo (Web Audio API)**:

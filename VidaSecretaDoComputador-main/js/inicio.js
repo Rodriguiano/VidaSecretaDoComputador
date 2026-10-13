@@ -29,6 +29,22 @@ document.getElementById(
     "btnContinuar"
 );
 
+const escolhas = document.querySelectorAll(".escolha");
+const textoEscolha = document.getElementById("textoEscolha");
+
+escolhas.forEach(escolha => {
+    escolha.addEventListener("click", () => {
+        escolhas.forEach(item => item.classList.remove("selecionada"));
+        escolha.classList.add("selecionada");
+        localStorage.setItem("estiloAprendizagem", escolha.dataset.estilo);
+        if (textoEscolha) {
+            textoEscolha.textContent = escolha.dataset.estilo === "desafiador"
+                ? "Você terá menos pistas e mais situações-problema."
+                : "Você receberá pistas e feedback durante a jornada.";
+        }
+        if (typeof tocarClique === "function") tocarClique();
+    });
+});
 
 
 
@@ -81,7 +97,6 @@ if (botaoContinuar) {
 };
 
 }
-
 
 
 

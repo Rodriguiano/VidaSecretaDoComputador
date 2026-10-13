@@ -17,3 +17,11 @@
     margin-bottom:20px;
     color: var(--texto-destaque);
 }
+
+.resumo-aprendizagem {
+    margin: 18px 0;
+    padding: 15px;
+    border-left: 4px solid var(--texto-destaque);
+    background: rgba(255,255,255,.06);
+    line-height: 1.6;
+}

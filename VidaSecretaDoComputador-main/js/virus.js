@@ -9,7 +9,7 @@ let acertosChefe = 0;
 function verificarFinal() {
     const pagina = window.location.pathname;
 
-    if (pagina.includes("personagem.html") && personagemAtual && personagemAtual.chefe) {
+    if (pagina.includes("personagem.html") && typeof personagemAtual !== "undefined" && personagemAtual && personagemAtual.chefe) {
         if (dadosJogo.concluidos.length === configuracaoJogo.totalMissoes) {
             // Chefe liberado
         }
@@ -18,6 +18,10 @@ function verificarFinal() {
 
 function iniciarBatalhaVirus() {
     if (typeof tocarVirus === "function") tocarVirus();
+    const curiosidade = document.getElementById("areaCuriosidade");
+    const quiz = document.getElementById("areaQuiz");
+    if (curiosidade) curiosidade.classList.add("escondido");
+    if (quiz) quiz.classList.remove("escondido");
     perguntaChefeAtual = 0;
     acertosChefe = 0;
     mostrarPerguntaVirus();
@@ -32,6 +36,12 @@ function mostrarPerguntaVirus() {
     const area = document.getElementById("alternativasQuiz");
 
     if (!perguntaEl || !area) return;
+
+    const botaoProxima = document.getElementById("btnProximaPergunta");
+    if (botaoProxima) {
+        botaoProxima.classList.add("escondido");
+        botaoProxima.onclick = null;
+    }
 
     perguntaEl.innerHTML = `<span class="badge-pergunta badge-chefe">⚔️ Desafio Chefe ${perguntaChefeAtual + 1} de ${listaPerguntas.length}</span><br>${perguntaAtual.pergunta}`;
 
@@ -56,6 +66,8 @@ function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, bota
 
     if (respostaEscolhida === respostaCorreta) {
         botaoClicado.classList.add("correta");
+        const feedback = document.getElementById("feedbackQuiz");
+        if (feedback) feedback.textContent = `✅ ${personagens.virus.perguntasChefe[perguntaChefeAtual].feedback[respostaCorreta]}`;
         if (typeof tocarSucesso === "function") tocarSucesso();
         acertosChefe++;
     } else {
@@ -63,10 +75,26 @@ function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, bota
         if (botoes[respostaCorreta]) {
             botoes[respostaCorreta].classList.add("correta");
         }
+        const feedback = document.getElementById("feedbackQuiz");
+        if (feedback) feedback.textContent = `🔁 ${personagens.virus.perguntasChefe[perguntaChefeAtual].feedback[respostaEscolhida]}`;
         if (typeof tocarErro === "function") tocarErro();
     }
 
-    setTimeout(() => {
+    const botaoProxima = document.getElementById("btnProximaPergunta");
+    if (botaoProxima) {
+        botaoProxima.textContent = perguntaChefeAtual + 1 < totalPerguntas
+            ? "Próxima pergunta"
+            : "Ver resultado";
+        botaoProxima.classList.remove("escondido");
+        botaoProxima.onclick = () => {
+            perguntaChefeAtual++;
+            if (perguntaChefeAtual < totalPerguntas) {
+                mostrarPerguntaVirus();
+            } else {
+                finalizarBatalhaVirus();
+            }
+        };
+    } else {
         perguntaChefeAtual++;
 
         if (perguntaChefeAtual < totalPerguntas) {
@@ -74,7 +102,7 @@ function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, bota
         } else {
             finalizarBatalhaVirus();
         }
-    }, 950);
+    }
 }
 
 function finalizarBatalhaVirus() {

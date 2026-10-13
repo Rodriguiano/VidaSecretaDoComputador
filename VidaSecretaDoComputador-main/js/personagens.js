@@ -1,239 +1,229 @@
 /* =====================================================
-   BANCO DE PERSONAGENS & MISSÕES EXPANDIDAS
-   Vida Secreta do Computador
+   BANCO DE PERSONAGENS E DESAFIOS
+   Conteudo baseado no roteiro instrucional do projeto.
 ===================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
     carregarPersonagem();
 });
+
+function desafio(pergunta, alternativas, correta, feedback, dica) {
+    return { pergunta, alternativas, correta, feedback, dica };
+}
 
 const personagens = {
     cpu: {
         nome: "CPU (Processador)",
         imagem: "../img/personagens/cpu.png",
         dialogos: [
-            "Olá, Agente Digital! Eu sou a CPU, a Unidade Central de Processamento.",
-            "Sou conhecida em todo o sistema como o cérebro do computador!",
-            "Minha função é interpretar comandos, realizar cálculos matemáticos e coordenar as tarefas.",
-            "Trabalho em uma frequência incrivelmente alta, executando bilhões de ciclos por segundo (GHz).",
-            "Como trabalho muito duro, acabo esquentando bastante, por isso preciso da ajuda de um cooler e pasta térmica!",
-            "Agora que você me conhece melhor, está preparado para testar seus conhecimentos no meu desafio?"
+            "Ola, Agente Digital! Eu sou a CPU, a Unidade Central de Processamento.",
+            "Sou o cerebro do computador: tudo o que voce pede passa por mim.",
+            "Pense em um maestro: eu leio a partitura (as instrucoes) e digo a cada parte do computador quando agir.",
+            "Executo instrucoes uma apos a outra, muito depressa. Minha velocidade e medida em GHz: 3 GHz sao 3 bilhoes de ciclos por segundo.",
+            "Mas velocidade nao e tudo: meus nucleos permitem fazer varias tarefas ao mesmo tempo. E eu esquento, por isso preciso de cooler e pasta termica.",
+            "Agora que voce me conhece melhor, esta preparado para testar seus conhecimentos?"
         ],
-        curiosidade: "A CPU executa bilhões de instruções por segundo! Para evitar o superaquecimento, ela usa uma pasta térmica especial e um cooler (ventilador ou refrigeração líquida) para manter a temperatura segura.",
-        pergunta: "Qual é a principal função da CPU no computador?",
-        alternativas: ["Armazenar fotos permanentemente", "Executar instruções e realizar cálculos do sistema", "Conectar o computador à rede wi-fi"],
-        correta: 1,
+        curiosidade: "O que sou: o processador; busco, interpreto e executo as instrucoes dos programas.\n\nComo trabalho: repito o ciclo buscar → interpretar → executar bilhoes de vezes por segundo, usando um ou mais nucleos.\n\nExemplo no cotidiano: ao abrir uma planilha, calculo as formulas e coordeno a resposta do sistema.\n\nNao confunda: GHz sozinho nao define o desempenho; nucleos e arquitetura tambem importam. CPU nao e o gabinete.",
         perguntas: [
-            {
-                pergunta: "Qual é a principal função da CPU (Unidade Central de Processamento)?",
-                alternativas: [
-                    "Armazenar fotos e músicas permanentemente",
-                    "Executar instruções e realizar cálculos para o funcionamento do sistema",
-                    "Apenas emitir sons e acender luzes no gabinete"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "O que mede a velocidade de processamento de uma CPU moderna?",
-                alternativas: [
-                    "Gigabytes (GB)",
-                    "Gigahertz (GHz)",
-                    "Polegadas (\")"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "O que a CPU utiliza para dissipar calor e não superaquecer durante tarefas pesadas?",
-                alternativas: [
-                    "Cooler (ventilador/sistema de refrigeração) e pasta térmica",
-                    "Filtro de linha elétrico e cabo HDMI",
-                    "Um leitor de cartão de memória"
-                ],
-                correta: 0
-            }
+            desafio("Um colega disse: \"a CPU e onde ficam guardados meus programas e fotos\". Qual explicacao corrige melhor essa frase?", [
+                "Esta certo, a CPU e o componente mais importante.",
+                "A CPU nao guarda arquivos: ela executa as instrucoes dos programas.",
+                "A CPU so serve para ligar o computador."
+            ], 1, [
+                "Ser importante nao significa guardar dados; guardar e funcao do armazenamento.",
+                "Exato! Quem guarda e o SSD; a CPU processa.",
+                "Ela trabalha o tempo todo, executando instrucoes."
+            ], "Pense em quem pensa e quem guarda."),
+            desafio("Ana compara duas CPUs: X (4,0 GHz, 2 nucleos) e Y (3,2 GHz, 8 nucleos). Para editar video com varios programas abertos, qual tende a ser melhor?", [
+                "X, pois mais GHz sempre vence.",
+                "Y, pois mais nucleos executam mais tarefas ao mesmo tempo.",
+                "Tanto faz, GHz nao importa."
+            ], 1, [
+                "GHz e importante, mas nao e o unico fator.",
+                "Para tarefas pesadas e simultaneas, mais nucleos costumam compensar.",
+                "Importa, so que nao sozinho."
+            ], "Quantas tarefas cada uma consegue fazer ao mesmo tempo?"),
+            desafio("Durante um jogo pesado, o PC desliga sozinho. O cooler da CPU esta entupido de poeira. Qual a causa mais provavel?", [
+                "A CPU superaqueceu e desligou o computador para se proteger.",
+                "A CPU esqueceu os programas.",
+                "O SSD esta sem espaco."
+            ], 0, [
+                "Sem dissipar calor, a CPU ultrapassa a temperatura segura e o sistema desliga.",
+                "A CPU nao guarda programas; o sintoma aponta para a refrigeracao.",
+                "SSD cheio deixa o PC lento, mas nao o desliga por calor."
+            ], "Poeira no cooler atrapalha o que?")
         ]
     },
 
     ram: {
-        nome: "Memória RAM",
+        nome: "RAM",
         imagem: "../img/personagens/ram.png",
         dialogos: [
-            "Oi, Agente! Eu sou a memória RAM (Memória de Acesso Aleatório).",
-            "Minha missão é guardar temporariamente todas as informações dos aplicativos que você está usando agora!",
-            "Sou super rápida e permito que o computador abra vários programas e abas de navegador ao mesmo tempo.",
-            "Porém, tenho um segredo: sou uma memória 'volátil'. Isso significa que não guardo nada para sempre.",
-            "Assim que o computador é desligado ou reiniciado, todos os dados da minha memória desaparecem limpos!",
-            "Pronto para mostrar que entendeu a diferença entre memória rápida e armazenamento?"
+            "Oi, Agente! Eu sou a RAM, a memoria de acesso aleatorio.",
+            "Sou a memoria de trabalho: guardo o que voce esta usando agora para a CPU pegar rapidinho.",
+            "Sou como a bancada de uma cozinha: so cabe o que esta sendo preparado agora. O resto fica no armario (o SSD).",
+            "Sou volatil: quando o computador desliga, tudo o que esta em mim e apagado. Por isso e importante salvar seu trabalho!",
+            "Minha capacidade e medida em GB. Com pouca RAM, o computador fica lento, porque nao cabe tudo na bancada.",
+            "Pronto para o desafio?"
         ],
-        curiosidade: "A memória RAM lê e grava dados em nanossegundos! Porém, por ser volátil, se a energia cair antes de você salvar um documento no Word ou no SSD, o trabalho é perdido.",
-        pergunta: "O que acontece com os dados armazenados na RAM quando o computador é desligado?",
-        alternativas: ["Eles são apagados completamente", "Eles ficam salvos para sempre", "Eles são enviados automaticamente para a nuvem"],
-        correta: 0,
+        curiosidade: "O que sou: memoria temporaria e muito rapida, onde ficam os programas e dados em uso.\n\nComo trabalho: recebo do armazenamento o que a CPU vai precisar; quando voce fecha um programa, o espaco e liberado.\n\nExemplo no cotidiano: cada aba aberta do navegador ocupa RAM; muitas abas podem deixar tudo lento.\n\nNao confunda: mais RAM nao aumenta o espaco para guardar fotos; isso depende do armazenamento.",
         perguntas: [
-            {
-                pergunta: "Por que a memória RAM é chamada de memória 'volátil'?",
-                alternativas: [
-                    "Porque ela dura para sempre sem precisar de energia",
-                    "Porque seus dados são apagados quando o computador é desligado",
-                    "Porque ela serve apenas para aumentar a resolução da tela"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "O que acontece quando você tenta abrir muitos jogos e programas pesados ao mesmo tempo sem ter RAM suficiente?",
-                alternativas: [
-                    "O computador fica muito lento ou trava por falta de memória temporária",
-                    "O monitor troca de cor para verde automaticamente",
-                    "Os arquivos do computador são excluídos sozinhos"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "Qual é a diferença fundamental entre a memória RAM e o SSD?",
-                alternativas: [
-                    "A RAM guarda arquivos permanentes e o SSD apaga tudo ao desligar",
-                    "A RAM guarda dados temporários de programas abertos, enquanto o SSD salva arquivos permanentemente",
-                    "Não existe diferença, ambas são exatamente o mesmo componente"
-                ],
-                correta: 1
-            }
+            desafio("Qual explicacao descreve melhor a diferenca entre RAM e SSD?", [
+                "A RAM e permanente e o SSD e temporario.",
+                "A RAM guarda temporariamente o que esta em uso; o SSD guarda de forma permanente.",
+                "Sao a mesma coisa com nomes diferentes."
+            ], 1, [
+                "E o contrario.",
+                "Isso mesmo! Por isso a RAM e rapida e o SSD guarda tudo mesmo desligado.",
+                "Tem funcoes e comportamentos diferentes."
+            ], "O que acontece com cada um quando o PC e desligado?"),
+            desafio("Voce escrevia um trabalho e a energia acabou antes de salvar. O que acontece com o texto que so estava na tela?", [
+                "Foi perdido, pois estava apenas na RAM.",
+                "Foi automaticamente para o SSD.",
+                "A CPU o guardou."
+            ], 0, [
+                "Dados nao salvos ficam na RAM, que e volatil. Alguns programas tem salvamento automatico, que cria copias no SSD.",
+                "So vai para o SSD quando e salvo.",
+                "A CPU processa, nao guarda dados."
+            ], "Onde fica o que ainda nao foi salvo?"),
+            desafio("O PC de Bruno fica lento com 30 abas e 3 programas abertos, embora o SSD tenha 500 GB livres. Qual a causa mais provavel?", [
+                "Falta de espaco no SSD.",
+                "A RAM esta cheia: os programas abertos ocupam mais memoria de trabalho do que cabe.",
+                "A internet esta desligada."
+            ], 1, [
+                "O SSD tem muito espaco livre.",
+                "A lentidao aparece quando a RAM se esgota.",
+                "Isso nao explica lentidao geral do sistema."
+            ], "O problema surge ao abrir muita coisa ao mesmo tempo.")
         ]
     },
 
     ssd: {
-        nome: "SSD (Armazenamento)",
+        nome: "SSD",
         imagem: "../img/personagens/ssd.png",
         dialogos: [
-            "Olá! Eu sou o SSD, a Unidade de Estado Sólido.",
-            "Diferente da minha amiga RAM, eu sou um armazenamento não-volátil. Tudo o que você me entrega fica salvo com segurança!",
-            "Guardo seus jogos, trabalhos, fotos, músicas e o próprio Sistema Operacional.",
-            "Não tenho partes mecânicas como os antigos HDs metálicos giratórios. Uso tecnologia de memória Flash NAND!",
-            "Por causa disso, sou até 10 vezes mais rápido que um HD tradicional e muito mais resistente a impactos.",
-            "Que tal testar se você sabe a diferença entre guardar temporariamente e armazenar com segurança?"
+            "Ola, Agente! Eu sou o SSD (Solid State Drive).",
+            "Guardo seus arquivos, programas e o sistema operacional, mesmo com o computador desligado.",
+            "Sou o armario da cozinha: tudo fica guardado ali ate alguem precisar.",
+            "Uso memoria flash, sem pecas que giram, por isso sou mais rapido e silencioso que o antigo HD.",
+            "Minha capacidade se mede em GB ou TB. Quando encho, nao cabem arquivos novos.",
+            "Vamos ao desafio?"
         ],
-        curiosidade: "Os antigos discos rígidos (HDs) tinham uma agulha física lendo discos metálicos a 7.200 rotações por minuto. O SSD não tem nenhuma peça móvel, por isso não faz barulho e lê dados quase instantaneamente!",
-        pergunta: "Qual é a principal função do SSD no computador?",
-        alternativas: ["Guardar arquivos e programas permanentemente", "Processar os efeitos 3D dos jogos", "Conectar os periféricos com fio"],
-        correta: 0,
+        curiosidade: "O que sou: armazenamento permanente de estado solido.\n\nComo trabalho: gravo e leio dados em chips de memoria flash; o computador copia para a RAM o que vai usar.\n\nExemplo no cotidiano: um jogo instalado ocupa espaco no SSD; ao abri-lo, parte dele e carregada na RAM.\n\nNao confunda: SSD guarda; RAM trabalha. O HD antigo tem disco giratorio, o SSD nao.",
         perguntas: [
-            {
-                pergunta: "Qual é a principal vantagem de um SSD moderno em relação a um HD antigo?",
-                alternativas: [
-                    "O SSD é muito mais rápido, silencioso e não possui partes mecânicas móveis",
-                    "O SSD consome muito mais energia e faz bastante barulho",
-                    "O SSD necessita de conexão constante com a internet para guardar fotos"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "Onde ficam salvos seus arquivos, vídeos e jogos mesmo quando o computador está totalmente desligado?",
-                alternativas: [
-                    "Na memória RAM",
-                    "No SSD (ou Unidade de Armazenamento)",
-                    "No cabo de alimentação de energia"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "O que significa a sigla SSD em português/inglês?",
-                alternativas: [
-                    "Super System Disk (Disco do Sistema)",
-                    "Solid State Drive (Unidade de Estado Sólido)",
-                    "System Safety Data (Dados de Segurança)"
-                ],
-                correta: 1
-            }
+            desafio("Por que um PC com SSD costuma abrir programas mais rapido que um com HD tradicional?", [
+                "O SSD usa memoria flash, sem partes mecanicas que precisam girar.",
+                "O SSD e maior fisicamente.",
+                "O SSD faz calculos mais rapido que a CPU."
+            ], 0, [
+                "Sem pecas moveis, o acesso aos dados e bem mais rapido.",
+                "O tamanho fisico nao explica a velocidade.",
+                "O SSD so armazena; quem calcula e a CPU."
+            ], "Pense no que o HD precisa fazer fisicamente para ler dados."),
+            desafio("Lia quer guardar 200 fotos e instalar 3 jogos grandes, mas o PC avisa que o armazenamento esta cheio. Qual a melhor solucao?", [
+                "Comprar mais RAM.",
+                "Apagar o que nao usa ou aumentar o armazenamento.",
+                "Trocar o cooler."
+            ], 1, [
+                "RAM nao aumenta o espaco de armazenamento.",
+                "A solucao e liberar espaco ou instalar um SSD maior.",
+                "O cooler cuida da temperatura."
+            ], "O aviso fala de armazenamento."),
+            desafio("Apos reiniciar o PC, os arquivos salvos continuam la, mas os programas que estavam abertos fecharam. O que explica isso?", [
+                "Os arquivos estavam no SSD (permanente); o que estava em execucao ficava na RAM (temporaria).",
+                "Tudo estava na RAM e so alguns dados sobreviveram.",
+                "Os arquivos estavam dentro da CPU."
+            ], 0, [
+                "Reiniciar limpa a RAM, mas o SSD preserva os dados.",
+                "Se estivessem so na RAM, os arquivos teriam sumido tambem.",
+                "A CPU nao armazena arquivos."
+            ], "Um guarda para sempre, o outro so enquanto esta ligado.")
         ]
     },
 
     gpu: {
-        nome: "GPU (Placa de Vídeo)",
+        nome: "GPU",
         imagem: "../img/personagens/gpu.png",
         dialogos: [
-            "Ei, entusiasta digital! Eu sou a GPU, a Unidade de Processamento Gráfico.",
-            "Minha paixão é transformar números e códigos em imagens incríveis, cores vibrantes e gráficos 3D espetaculares!",
-            "Enquanto a CPU lida com cálculos gerais, eu sou especialista em calcular milhões de pixels na tela por segundo.",
-            "Se você adora jogar com altas taxas de quadros (FPS), assistir vídeos em 4K ou editar animações, eu sou sua melhor amiga!",
-            "Possuo milhares de pequenos núcleos que trabalham todos juntos ao mesmo tempo para desenhar cenários realistas.",
-            "Hora de testar se os seus olhos captaram o papel da Placa de Vídeo!"
+            "Ola, Agente! Eu sou a GPU, a Unidade de Processamento Grafico.",
+            "Crio as imagens, videos e animacoes que aparecem na sua tela.",
+            "A CPU faz poucas tarefas complexas. Eu faco milhares de contas simples ao mesmo tempo, como uma grande equipe de pintores.",
+            "Isso e perfeito para calcular a cor de milhoes de pixels a cada segundo em jogos, videos e edicao.",
+            "Posso vir integrada ao processador ou numa placa de video dedicada, com memoria propria (VRAM).",
+            "Pronto para o desafio?"
         ],
-        curiosidade: "A GPU lida com matemática vetorial e matricial massiva. Por causa disso, além de jogos 3D, as GPUs hoje são usadas para treinar inteligências artificiais avançadas e processar supercomputadores!",
-        pergunta: "Qual componente é responsável pela criação e renderização de imagens e gráficos 3D?",
-        alternativas: ["GPU (Placa de Vídeo)", "Mouse", "Placa de Som"],
-        correta: 0,
+        curiosidade: "O que sou: processador especializado em graficos.\n\nComo trabalho: calculo cor e posicao de milhoes de pixels em paralelo e envio o resultado ao monitor.\n\nExemplo no cotidiano: jogos 3D, videos em alta resolucao e edicao de imagem.\n\nNao confunda: GPU nao e o monitor e nao e a CPU. PCs simples usam GPU integrada.",
         perguntas: [
-            {
-                pergunta: "Qual componente é especializado em processar gráficos 3D, jogos e renderização de vídeos?",
-                alternativas: [
-                    "GPU (Placa de Vídeo)",
-                    "Fonte de Alimentação",
-                    "Teclado e Mouse"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "O que significa a sigla FPS em jogos e vídeos?",
-                alternativas: [
-                    "Fotos Por Segundo",
-                    "Frames Per Second (Quadros Por Segundo)",
-                    "Frequência Principal do Sistema"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "Como a GPU consegue calcular cenários virtuais 3D tão rapidamente?",
-                alternativas: [
-                    "Usando milhares de pequenos núcleos especializados em processar pixels em paralelo",
-                    "Baixando as imagens prontas da internet toda vez que você se move no jogo",
-                    "Desligando o processador (CPU) enquanto o jogo é executado"
-                ],
-                correta: 0
-            }
+            desafio("Por que a GPU e boa para desenhar imagens na tela?", [
+                "Executa uma so conta por vez, mas muito rapido.",
+                "Faz muitas contas simples ao mesmo tempo, como calcular cada pixel.",
+                "Guarda as imagens permanentemente."
+            ], 1, [
+                "Isso descreve melhor um nucleo de CPU.",
+                "Esse processamento paralelo combina com graficos.",
+                "Armazenar e funcao do SSD."
+            ], "Uma tela tem milhoes de pixels para calcular juntos."),
+            desafio("Rui quer jogar jogos 3D modernos e editar videos 4K. Qual melhoria no PC tera mais impacto direto?", [
+                "Uma placa de video dedicada.",
+                "Um teclado melhor.",
+                "Mais portas USB."
+            ], 0, [
+                "Graficos pesados dependem muito da GPU.",
+                "Isso nao afeta o desempenho grafico.",
+                "Isso nao afeta o processamento de imagens."
+            ], "Qual componente cuida de graficos?"),
+            desafio("O monitor de Dani mostra a area de trabalho normalmente, mas em jogos trava e roda com poucos quadros por segundo. Qual hipotese e mais coerente?", [
+                "O monitor esta sem energia.",
+                "A GPU (integrada) nao da conta da carga grafica dos jogos.",
+                "O SSD esta sem arquivos."
+            ], 1, [
+                "Se estivesse, nada apareceria.",
+                "Tarefas simples funcionam; as pesadas exigem mais da GPU.",
+                "Isso nao causa queda de quadros."
+            ], "O problema so aparece em tarefa pesada.")
         ]
     },
 
     placamae: {
-        nome: "Placa-mãe",
+        nome: "Placa-mae",
         imagem: "../img/personagens/placamae.png",
         dialogos: [
-            "Olá! Eu sou a Placa-mãe, o coração estrutural do computador.",
-            "Sou a grande placa de circuito impresso onde todos os outros componentes são encaixados e conectados.",
-            "CPU, RAM, SSD, GPU e fonte de energia... todos dependem de mim para se comunicarem entre si!",
-            "Possuo 'barramentos', que são verdadeiras estradas eletrônicas por onde trafegam os dados do sistema.",
-            "Também possuo a BIOS/UEFI, um pequeno chip com as instruções iniciais para ligar o computador.",
-            "Pronto para mostrar que você aprendeu quem une todas as peças dessa máquina?"
+            "Ola, Agente! Eu sou a Placa-mae.",
+            "Sou a grande placa onde todos os componentes sao encaixados e conectados.",
+            "Pense em mim como uma cidade com ruas: levo energia e informacao de um lugar a outro.",
+            "Tenho o soquete da CPU, os slots da RAM, os conectores do SSD e o espaco da placa de video.",
+            "Os caminhos por onde os dados circulam se chamam barramentos. E nem tudo encaixa em mim: e preciso haver compatibilidade.",
+            "Vamos ao desafio?"
         ],
-        curiosidade: "Na superfície da placa-mãe existem linhas de cobre super finas chamadas 'trilhas' ou 'barramentos'. Elas transportam sinais elétricos com dados entre o processador e as memórias a velocidades altíssimas!",
-        pergunta: "Qual peça é responsável por conectar e permitir a comunicação entre todos os componentes?",
-        alternativas: ["Placa-mãe", "Gabinete de metal", "Caixa de som externa"],
-        correta: 0,
+        curiosidade: "O que sou: a placa de circuito principal que interliga todos os componentes.\n\nComo trabalho: meus barramentos transportam dados e energia; o firmware (BIOS/UEFI) inicia o hardware ao ligar.\n\nExemplo no cotidiano: ao trocar a RAM, voce encaixa o novo pente no slot da placa.\n\nNao confunda: nem toda CPU ou RAM serve em toda placa; e preciso checar o soquete e o tipo de memoria.",
         perguntas: [
-            {
-                pergunta: "Qual é o papel fundamental da Placa-mãe no computador?",
-                alternativas: [
-                    "Apenas segurar os botões do gabinete sem conduzir energia",
-                    "Interconectar e permitir a comunicação elétrica e de dados entre todos os componentes",
-                    "Imprimir documentos em papel automaticamente"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "Como são chamadas as trilhas eletrônicas na placa-mãe pelas quais as informações viajam?",
-                alternativas: [
-                    "Trilhos de trem elétrico",
-                    "Barramentos (Buses)",
-                    "Fios de internet sem fio"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "O que é encaixado nos chamados 'slots de expansão' (como os slots PCIe) da Placa-mãe?",
-                alternativas: [
-                    "Placas de vídeo (GPU), placas de rede e outros componentes de expansão",
-                    "Apenas os cabos da impressora",
-                    "Folhas de papel para salvar documentos"
-                ],
-                correta: 0
-            }
+            desafio("Qual frase explica melhor o papel da placa-mae?", [
+                "Executa os programas no lugar da CPU.",
+                "Interliga os componentes e permite que eles se comuniquem.",
+                "Guarda os arquivos do usuario."
+            ], 1, [
+                "Quem executa e a CPU.",
+                "E a base que conecta tudo.",
+                "Isso e funcao do SSD."
+            ], "Pense em conexao."),
+            desafio("Voce comprou uma CPU nova, mas ela nao encaixa na placa-mae do seu PC. O que deveria ter verificado antes?", [
+                "Se o soquete da placa e compativel com a CPU.",
+                "Se a CPU combina com a cor do gabinete.",
+                "Quantos GB tem o monitor."
+            ], 0, [
+                "Cada placa so aceita certos tipos de CPU.",
+                "Cor nao influencia.",
+                "Monitor nao tem relacao com o encaixe."
+            ], "Onde a CPU se encaixa na placa?"),
+            desafio("Uma RAM funciona no PC de um amigo, mas nao no seu, mesmo sendo uma memoria nova. Qual a explicacao mais provavel?", [
+                "A RAM so funciona uma vez.",
+                "As placas-mae usam tipos de memoria diferentes (por exemplo, DDR4 e DDR5).",
+                "O SSD bloqueia a RAM."
+            ], 1, [
+                "Nao existe essa limitacao.",
+                "Memoria e placa precisam ser compativeis.",
+                "O SSD nao interfere nisso."
+            ], "O que precisa combinar entre a placa e a memoria?")
         ]
     },
 
@@ -241,45 +231,42 @@ const personagens = {
         nome: "Firewall",
         imagem: "../img/personagens/firewall.png",
         dialogos: [
-            "Atenção, Agente! Eu sou o Firewall, o escudo e guardião da sua rede.",
-            "Minha missão principal é inspecionar todo o tráfego de dados que tenta entrar ou sair do seu computador.",
-            "Analiso pacotes de informação, verifico regras de segurança e bloqueio conexões maliciosas ou não autorizadas.",
-            "Trabalho dia e noite impedindo que invasores, hackers e scripts maldosos tenham acesso aos seus dados pessoais.",
-            "Sou a primeira linha de defesa antes que ameaças cheguem ao seu sistema operacinal.",
-            "Vamos verificar se você entendeu como manter as portas da sua máquina seguras!"
+            "Ola, Agente! Eu sou o Firewall, o guardiao do sistema.",
+            "Fico entre o seu computador e a rede, vigiando tudo que entra e sai.",
+            "Sou como o porteiro de um predio: confiro quem quer entrar e barro quem nao deveria.",
+            "Sigo regras: permito conexoes seguras e bloqueio as suspeitas.",
+            "Mas nao sou magico: nao impeco voce de abrir um arquivo perigoso. Use antivirus, atualize o sistema e desconfie de links!",
+            "Pronto para o desafio?"
         ],
-        curiosidade: "O nome 'Firewall' (Parede de Fogo) veio da arquitetura civil: paredes reforçadas construídas em edifícios para impedir que incêndios se espalhassem de uma sala para outra!",
-        pergunta: "Qual é a função do Firewall no computador?",
-        alternativas: ["Filtrar o tráfego de dados e bloquear acessos não autorizados", "Aumentar a velocidade dos jogos online", "Formatar a memória RAM"],
-        correta: 0,
+        curiosidade: "O que sou: uma barreira de seguranca que filtra o trafego de rede.\n\nComo trabalho: analiso as conexoes e aplico regras para permitir ou bloquear.\n\nExemplo no cotidiano: quando o sistema pergunta se um programa pode acessar a rede, o firewall esta agindo.\n\nNao confunda: firewall nao e antivirus; um filtra conexoes, o outro procura e remove ameacas nos arquivos.",
         perguntas: [
-            {
-                pergunta: "O que o Firewall faz quando detecta uma tentativa de conexão de rede suspeita ou não autorizada?",
-                alternativas: [
-                    "Permite a conexão sem avisar o usuário",
-                    "Bloqueia a conexão para proteger o sistema contra invasões",
-                    "Desliga a luz do quarto imediatamente"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "Contra qual tipo de ameaça o Firewall nos protege principalmente?",
-                alternativas: [
-                    "Ataques de rede, intrusos digitais e conexões perigosas vindas da internet",
-                    "Quedas físicas do computador da mesa",
-                    "Manchas de sujeira na tela do monitor"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "Podemos comparar o trabalho do Firewall a:",
-                alternativas: [
-                    "Um leitor de livros virtuais",
-                    "Um porteiro ou guarda de segurança inspecionando quem pode entrar e sair do prédio",
-                    "Um teclado musical"
-                ],
-                correta: 1
-            }
+            desafio("Qual explicacao descreve melhor o que o firewall faz?", [
+                "Filtra o trafego de rede segundo regras, permitindo ou bloqueando conexoes.",
+                "Remove arquivos infectados do computador.",
+                "Aumenta a velocidade da internet."
+            ], 0, [
+                "E o porteiro da rede.",
+                "Isso e funcao do antivirus.",
+                "Seguranca nao e velocidade."
+            ], "Lembre da analogia do porteiro."),
+            desafio("Um site desconhecido tenta conectar ao seu PC sem voce ter pedido, e o firewall mostra um alerta. O que fazer?", [
+                "Permitir sempre, para evitar problemas.",
+                "Bloquear, ja que voce nao solicitou essa conexao.",
+                "Desligar o firewall."
+            ], 1, [
+                "Liberar conexoes desconhecidas abre brechas.",
+                "Na duvida, bloqueie.",
+                "Isso deixaria o PC desprotegido."
+            ], "Voce pediu essa conexao?"),
+            desafio("Marcos manteve o firewall ligado, mas o PC foi infectado apos ele abrir um anexo de e-mail desconhecido. Por que o firewall nao evitou?", [
+                "Porque o firewall nao serve para nada.",
+                "O firewall filtra trafego de rede, mas foi o usuario quem executou o arquivo; a protecao tambem depende de antivirus e atencao.",
+                "O virus entrou pelo monitor."
+            ], 1, [
+                "Ele protege, mas contra outro tipo de risco.",
+                "Seguranca tem varias camadas, incluindo o usuario.",
+                "Isso nao existe."
+            ], "Quem abriu o arquivo?")
         ]
     },
 
@@ -287,91 +274,85 @@ const personagens = {
         nome: "Internet",
         imagem: "../img/personagens/internet.png",
         dialogos: [
-            "Olá! Eu sou a Internet, a gigante rede global de computadores interconectados.",
-            "Comigo, distâncias não existem! Conecto seu dispositivo a servidores e pessoas espalhados por todo o planeta.",
-            "Permito que você acesse websites, assista a streamings, envie mensagens instantâneas e jogue online em equipe.",
-            "Utilizo protocolos padronizados (como o TCP/IP) e endereços IP únicos para que cada mensagem chegue ao destino correto.",
-            "Muitos acham que funciono apenas no ar, mas a maior parte do meu tráfego viaja por imensos cabos submarinos!",
-            "Está pronto para testar o que sabe sobre a grande teia mundial de computadores?"
+            "Ola, Agente! Eu sou a Internet.",
+            "Sou uma rede gigante que conecta bilhoes de computadores e dispositivos do mundo.",
+            "Imagine os Correios: sua mensagem e dividida em pacotes, que viajam por varias rotas e se juntam no destino.",
+            "Cada dispositivo tem um endereco, o IP. E o DNS traduz nomes como site.com em enderecos IP.",
+            "Roteadores e cabos levam os pacotes. O Wi-Fi e so a forma sem fio de chegar ate o roteador.",
+            "Vamos ao desafio?"
         ],
-        curiosidade: "Cerca de 99% do tráfego internacional da internet é transmitido por centenas de cabos de fibra óptica submarinos instalados nos oceanos do planeta, capazes de transmitir terabits de dados por segundo!",
-        pergunta: "O que a Internet permite fazer no computador?",
-        alternativas: ["Conectar computadores no mundo todo para trocar dados e informações", "Trocar a cor física do gabinete do computador", "Substituir a necessidade de energia elétrica"],
-        correta: 0,
+        curiosidade: "O que sou: a rede mundial que interliga redes menores.\n\nComo trabalho: divido os dados em pacotes e os encaminho usando enderecos IP; o DNS traduz nomes em IPs.\n\nExemplo no cotidiano: ao abrir um video, seu pedido vai a um servidor e os pacotes voltam ao seu aparelho.\n\nNao confunda: Internet nao e Wi-Fi, e nao e o navegador. A Web e um servico que funciona sobre a internet.",
         perguntas: [
-            {
-                pergunta: "O que permite que computadores em continentes diferentes troquem informações em frações de segundo?",
-                alternativas: [
-                    "A rede mundial de computadores (Internet) através de cabos de fibra óptica e roteadores",
-                    "O leitor de discos de CD/DVD local",
-                    "O cabo do teclado"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "Qual identificador numérico único cada dispositivo conectado à internet recebe para ser localizado?",
-                alternativas: [
-                    "Endereço de e-mail",
-                    "Endereço IP (Internet Protocol)",
-                    "Código de barras do produto"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "O que é um 'Servidor' na internet?",
-                alternativas: [
-                    "Um computador potente que armazena dados, sites e serviços para fornecer a outros clientes",
-                    "Um aplicativo de edição de imagem",
-                    "Um tipo de cabo de impressora"
-                ],
-                correta: 0
-            }
+            desafio("Qual explicacao descreve melhor o papel do DNS?", [
+                "Traduz nomes de sites em enderecos IP.",
+                "Protege contra virus.",
+                "Guarda as paginas no SSD."
+            ], 0, [
+                "E como uma lista telefonica da internet.",
+                "Isso e funcao de antivirus e firewall.",
+                "O DNS nao armazena paginas."
+            ], "Nomes sao faceis para pessoas; numeros para maquinas."),
+            desafio("O Wi-Fi da casa mostra sinal completo, mas nenhum site abre, nem no celular. Qual a primeira acao mais logica?", [
+                "Reiniciar o roteador/modem e verificar o servico do provedor.",
+                "Trocar a placa de video.",
+                "Formatar o SSD."
+            ], 0, [
+                "O problema esta na conexao com a internet, nao no computador.",
+                "Nao tem relacao com acesso a rede.",
+                "Seria exagero e nao resolveria."
+            ], "Se o celular tambem falha, o problema e do computador?"),
+            desafio("Maria acessa um site digitando o endereco numerico (IP) e funciona, mas pelo nome ele nao abre. O que isso indica?", [
+                "Problema no DNS, que traduz nomes em IPs.",
+                "O computador esta sem energia.",
+                "A RAM esta cheia."
+            ], 0, [
+                "A conexao funciona; falha so a traducao do nome.",
+                "Se estivesse, nada abriria.",
+                "Nao explicaria falhar so pelo nome."
+            ], "O que muda entre digitar o IP e digitar o nome?")
         ]
     },
 
     arquivos: {
-        nome: "Arquivos de Dados",
+        nome: "Arquivos",
         imagem: "../img/personagens/arquivos.png",
         dialogos: [
-            "Oi, Agente! Eu sou o Arquivo de Dados.",
-            "Represento todas as suas fotos de férias, documentos importantes, músicas favoritas e executáveis de programas.",
-            "Organizo as informações em pastas (diretórios) e utilizo extensões para identificar o meu tipo de conteúdo.",
-            "Por exemplo: `.png` ou `.jpg` para fotos, `.mp3` para áudio, `.mp4` para vídeos e `.pdf` ou `.docx` para textos.",
-            "No nível mais profundo da máquina, eu sou guardado como uma sequência ordenada de código binário (zeros e umes).",
-            "Será que você sabe identificar corretamente os tipos de arquivos e sua organização?"
+            "Ola, Agente! Eu sou o Arquivo. Nao sou uma peca fisica: represento o mundo do software e dos dados.",
+            "Todo texto, foto, musica ou programa e guardado como um arquivo, com nome e extensao.",
+            "Imagine uma biblioteca: os arquivos sao os livros e as pastas sao as estantes que os organizam.",
+            "A extensao (.docx, .jpg, .mp3) indica o tipo, e o sistema sabe qual programa abre cada um.",
+            "Quem organiza onde tudo fica no SSD e o sistema de arquivos. E faca backup: copias em outro lugar evitam perder tudo!",
+            "Pronto para o desafio?"
         ],
-        curiosidade: "Todas as fotos, músicas e documentos no computador são, na verdade, gigantescas sequências de bits (0s e 1s). O computador sabe se o arquivo é imagem ou som lendo a extensão do arquivo e o seu cabeçalho digital!",
-        pergunta: "Como as informações são organizadas no sistema operacional?",
-        alternativas: ["Em arquivos com formatos específicos agrupados em pastas/diretórios", "Espalhadas sem qualquer formato na tela", "Gravadas apenas nas lâmpadas da sala"],
-        correta: 0,
+        curiosidade: "O que sou: a unidade com que o computador guarda informacao, com nome, tipo e tamanho.\n\nComo trabalho: o sistema de arquivos organiza tudo em pastas e registra onde cada arquivo esta no SSD.\n\nExemplo no cotidiano: foto.jpg dentro da pasta Imagens.\n\nNao confunda: arquivo e dado (software); SSD e o hardware que o guarda.",
         perguntas: [
-            {
-                pergunta: "Em qual linguagem básica os computadores armazenam e leem internamente o conteúdo de qualquer arquivo?",
-                alternativas: [
-                    "Código Binário (sequências de 0s e 1s)",
-                    "Letras desenhadas em metal",
-                    "Código Morse acústico"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "Qual extensão de arquivo abaixo é usada para armazenar fotos e imagens digitais?",
-                alternativas: [
-                    ".mp3",
-                    ".jpg ou .png",
-                    ".exe"
-                ],
-                correta: 1
-            },
-            {
-                pergunta: "Qual é a utilidade das pastas (diretórios) em um sistema operacional?",
-                alternativas: [
-                    "Organizar e estruturar os arquivos para facilitar a localização das informações",
-                    "Excluir dados antigos automaticamente",
-                    "Aumentar o brilho e contraste da tela do computador"
-                ],
-                correta: 0
-            }
+            desafio("O que a extensao de um arquivo (como .jpg ou .docx) informa?", [
+                "O tipo do arquivo, ajudando o sistema a escolher o programa para abri-lo.",
+                "A velocidade da CPU.",
+                "O tamanho da RAM."
+            ], 0, [
+                "A extensao identifica o formato.",
+                "Nao tem relacao.",
+                "Nao tem relacao."
+            ], "Ela vem depois do ponto no nome."),
+            desafio("Pedro tem 300 fotos, trabalhos e musicas misturados na area de trabalho e nao encontra nada. Qual a melhor acao?", [
+                "Criar pastas por categoria e mover os arquivos.",
+                "Comprar mais RAM.",
+                "Renomear todos como arquivo."
+            ], 0, [
+                "Pastas organizam e facilitam a busca.",
+                "Nao resolve desorganizacao.",
+                "Nomes iguais pioram a confusao."
+            ], "Lembre da biblioteca."),
+            desafio("O notebook de Carla queimou e ela perdeu todos os trabalhos, que so existiam nele. O que teria evitado a perda?", [
+                "Ter copias de seguranca (backup) em outro local, como nuvem ou HD externo.",
+                "Dar outro nome as pastas.",
+                "Ter mais GHz na CPU."
+            ], 0, [
+                "Uma copia separada sobrevive a falhas do equipamento.",
+                "Nao protege contra falha de hardware.",
+                "Velocidade nao protege dados."
+            ], "Onde estava a unica copia?")
         ]
     },
 
@@ -379,60 +360,116 @@ const personagens = {
         nome: "Vírus Misterioso",
         imagem: "../img/personagens/virus.png",
         dialogos: [
-            "MWAHAHAHA! Finalmente o Agente Digital criou coragem para me encarar!",
-            "Eu sou o Vírus Misterioso, uma ameaça maliciosa pronta para corromper dados e causar o caos!",
-            "Você acha que aprendeu bastante conversando com os componentes do sistema?",
-            "Para me derrotar e salvar o computador de vez, você terá que responder corretamente a todas as minhas perguntas de teste final!",
-            "Se você falhar, eu vou infectar o sistema inteiro! Mostre do que você é capaz se tiver coragem!"
+            "Hahaha! Entao voce e o Agente Digital que se acha capaz de me deter?",
+            "Eu me espalho por links falsos, anexos e programas piratas, e invado quem se descuida.",
+            "Ja derrubei varios sistemas. Mas se voce prestou atencao nos habitantes, sabe como me enfrentar.",
+            "Vou testar tudo o que voce aprendeu. Cada resposta certa me enfraquece!",
+            "Se errar, eu me fortaleço, mas voce podera tentar de novo e aprender com a explicacao."
         ],
-        curiosidade: "Vírus de computador são softwares maliciosos (malware) criados para infectar arquivos, roubar senhas ou danificar sistemas. A melhor proteção é manter antivírus atualizados e não clicar em links suspeitos!",
         perguntasChefe: [
-            {
-                pergunta: "1/5: Qual componente é conhecido como o cérebro do computador e executa todos os cálculos?",
-                alternativas: [
-                    "CPU (Processador)",
-                    "SSD",
-                    "Monitor"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "2/5: Qual memória guarda dados temporários de programas abertos e é apagada ao desligar?",
-                alternativas: [
-                    "Memória RAM",
-                    "SSD",
-                    "Placa-mãe"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "3/5: Qual componente é o responsável especialista em renderizar gráficos 3D e jogos?",
-                alternativas: [
-                    "GPU (Placa de Vídeo)",
-                    "Firewall",
-                    "Arquivos"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "4/5: Qual peça central interconecta eletricamente todos os componentes do computador?",
-                alternativas: [
-                    "Placa-mãe",
-                    "Internet",
-                    "Cooler"
-                ],
-                correta: 0
-            },
-            {
-                pergunta: "5/5: Qual sistema de segurança inspeciona o tráfego da rede para bloquear conexões maliciosas?",
-                alternativas: [
-                    "Firewall",
-                    "SSD",
-                    "Memória RAM"
-                ],
-                correta: 0
-            }
+            desafio("Qual associacao componente-funcao esta correta?", [
+                "Placa-mae: executa os programas.",
+                "GPU: gera as imagens exibidas na tela.",
+                "SSD: guarda dados so enquanto o PC esta ligado."
+            ], 1, [
+                "Quem executa e a CPU.",
+                "A GPU gera as imagens exibidas na tela.",
+                "Isso descreve a RAM."
+            ]),
+            desafio("Seu PC fica lento ao abrir muitos programas, mas o SSD tem bastante espaco livre. Qual melhoria e mais indicada?", [
+                "Aumentar a RAM.",
+                "Trocar o monitor.",
+                "Comprar outro teclado."
+            ], 0, [
+                "Mais memoria de trabalho comporta mais programas abertos.",
+                "Nao afeta a velocidade.",
+                "Nao afeta a velocidade."
+            ]),
+            desafio("Qual combinacao reduz mais o risco de infeccao por um link malicioso?", [
+                "Firewall ligado, antivirus atualizado e desconfiar de links desconhecidos.",
+                "Apenas aumentar a RAM.",
+                "Apenas trocar o cooler."
+            ], 0, [
+                "Seguranca em camadas, incluindo o comportamento do usuario.",
+                "RAM nao protege.",
+                "Cooler cuida da temperatura."
+            ]),
+            desafio("Um PC com 16 GB de RAM, SSD de 1 TB quase vazio e CPU de 8 nucleos trava somente ao jogar. O que investigar primeiro?", [
+                "A GPU, que pode ser fraca para a carga grafica.",
+                "O espaco do SSD.",
+                "O nome do Wi-Fi."
+            ], 0, [
+                "So trava em jogos, sinal de limite grafico.",
+                "Esta quase vazio.",
+                "Nao tem relacao."
+            ]),
+            desafio("Ana diz: \"para nao perder meu trabalho basta deixa-lo aberto, pois a RAM guarda tudo\". Bia diz: \"e preciso salvar no SSD ou na nuvem\". Quem tem razao?", [
+                "Ana.",
+                "Bia: salvar grava o arquivo em armazenamento permanente.",
+                "As duas, pois da no mesmo."
+            ], 1, [
+                "A RAM e volatil: se faltar energia, o conteudo se perde.",
+                "Salvar grava o arquivo em armazenamento permanente.",
+                "Ha diferenca entre dado temporario e permanente."
+            ])
         ],
         chefe: true
+    }
+};
+
+const aulasPersonagens = {
+    cpu: {
+        conceito: "A CPU e o processador: interpreta instrucoes e coordena operacoes do computador.",
+        funcionamento: "Ela busca, interpreta e executa instrucoes usando um ou mais nucleos.",
+        exemplo: "Ao abrir uma planilha, a CPU calcula formulas e coordena a resposta do sistema.",
+        naoConfunda: "GHz mede ciclos de clock, mas nao determina sozinho o desempenho: arquitetura e nucleos tambem importam."
+    },
+    ram: {
+        conceito: "A RAM e a memoria de trabalho, rapida e temporaria, usada pelos programas em execucao.",
+        funcionamento: "O armazenamento envia para a RAM os dados que a CPU vai usar; ao fechar um programa, o espaco e liberado.",
+        exemplo: "Cada aba aberta do navegador ocupa RAM; muitas abas podem deixar tudo lento.",
+        naoConfunda: "Mais RAM nao aumenta o espaco para guardar fotos; isso depende do armazenamento."
+    },
+    ssd: {
+        conceito: "O SSD e um armazenamento permanente de estado solido baseado em memoria flash.",
+        funcionamento: "Ele grava e le dados em chips de memoria flash e fornece ao sistema os arquivos que serao usados.",
+        exemplo: "Um jogo instalado ocupa espaco no SSD e, ao abrir, parte dele e carregada na RAM.",
+        naoConfunda: "SSD guarda; RAM trabalha. O HD antigo tem disco giratorio, o SSD nao."
+    },
+    gpu: {
+        conceito: "A GPU e especializada em executar muitos calculos graficos em paralelo.",
+        funcionamento: "Ela calcula cor e posicao de milhoes de pixels e envia o resultado ao monitor.",
+        exemplo: "Em um jogo, a GPU calcula sombras, cores e a imagem que aparece no monitor.",
+        naoConfunda: "GPU nao e monitor nem CPU; PCs simples podem usar GPU integrada."
+    },
+    placamae: {
+        conceito: "A placa-mae e a placa de circuito principal que interliga todos os componentes.",
+        funcionamento: "Seus barramentos transportam dados e energia; o BIOS/UEFI inicia o hardware ao ligar.",
+        exemplo: "Ao trocar a RAM, voce encaixa o novo pente no slot da placa.",
+        naoConfunda: "Nem toda CPU ou RAM serve em toda placa; e preciso verificar compatibilidade."
+    },
+    firewall: {
+        conceito: "Firewall e uma barreira de seguranca que filtra o trafego de rede conforme regras.",
+        funcionamento: "Ele analisa conexoes e permite ou bloqueia o trafego.",
+        exemplo: "Quando o sistema pergunta se um programa pode acessar a rede, o firewall esta agindo.",
+        naoConfunda: "Firewall nao e antivirus: um filtra conexoes, o outro procura ameacas nos arquivos."
+    },
+    internet: {
+        conceito: "A Internet e a rede mundial que interliga redes menores.",
+        funcionamento: "Os dados viajam em pacotes usando enderecos IP; o DNS traduz nomes em IPs.",
+        exemplo: "Ao abrir um video, seu pedido vai a um servidor e os pacotes voltam ao aparelho.",
+        naoConfunda: "Internet nao e Wi-Fi nem navegador; a Web e um servico sobre a Internet."
+    },
+    arquivos: {
+        conceito: "Arquivo e a unidade de dados identificada por nome, tipo e tamanho.",
+        funcionamento: "O sistema de arquivos organiza dados em pastas e registra onde cada arquivo esta no SSD.",
+        exemplo: "foto.jpg dentro da pasta Imagens.",
+        naoConfunda: "Arquivo e dado (software); SSD e o hardware que o guarda."
+    },
+    virus: {
+        conceito: "Virus e um malware criado para se espalhar ou executar acoes prejudiciais.",
+        funcionamento: "Ele pode explorar vulnerabilidades, enganar usuarios ou alterar arquivos.",
+        exemplo: "Um anexo malicioso pode instalar um programa que rouba dados quando aberto.",
+        naoConfunda: "Nem todo problema do computador e virus; lentidao tambem pode vir de falta de RAM ou armazenamento cheio."
     }
 };

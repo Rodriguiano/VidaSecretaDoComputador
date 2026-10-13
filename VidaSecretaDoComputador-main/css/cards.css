@@ -47,3 +47,24 @@
     font-size: 17px;
     color: var(--texto-secundario);
 }
+
+.objetivos-aprendizagem {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+}
+
+.objetivos-aprendizagem span, .escolha {
+    padding: 8px 12px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+}
+
+.escolha-missao { margin-top: 24px; }
+.escolhas { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+.escolha { color: inherit; font: inherit; cursor: pointer; transition: .2s ease; }
+.escolha:hover, .escolha.selecionada { border-color: var(--texto-destaque); background: rgba(93,214,255,.18); transform: translateY(-2px); }
+.escolha-missao small { color: var(--texto-secundario); }

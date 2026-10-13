@@ -56,11 +56,125 @@
     font-size:30px;
 }
 
+.identificacao-aluno {
+    max-width: 420px;
+    margin: 22px auto 8px;
+    text-align: left;
+}
+
+.identificacao-aluno label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 700;
+    color: var(--texto-destaque);
+}
+
+.identificacao-aluno input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: rgba(255,255,255,.1);
+    color: var(--texto-principal);
+    font: inherit;
+}
+
+.nome-certificado {
+    margin: 15px 0 3px;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--texto-destaque);
+}
+
+.data-certificado {
+    margin-bottom: 20px;
+    color: var(--texto-secundario);
+    font-size: 14px;
+}
+
 .mensagem-certificado {
     margin:30px 0;
     line-height:1.8;
     font-size:18px;
     color: var(--texto-secundario);
+}
+
+.competencias-certificado {
+    margin: 25px auto;
+    padding: 18px;
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    background: rgba(255,255,255,.06);
+}
+
+.competencias-certificado strong {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--texto-destaque);
+}
+
+.competencias-certificado div {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.competencias-certificado span {
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--btn-secundario-bg);
+    font-size: 13px;
+}
+
+.certificado .botao-secundario {
+    margin-top: 12px;
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 12mm;
+    }
+
+    body {
+        background: white !important;
+        color: #172033 !important;
+    }
+
+    .fundo-gradiente,
+    .identificacao-aluno,
+    .certificado button,
+    .trofeu {
+        display: none !important;
+    }
+
+    .container-certificado {
+        min-height: auto;
+        padding: 0;
+    }
+
+    .certificado {
+        max-width: none;
+        padding: 28mm 24mm;
+        border: 6px double #d49b22;
+        border-radius: 0;
+        background: white;
+        box-shadow: none;
+    }
+
+    .certificado h1,
+    .nome-certificado,
+    .competencias-certificado strong {
+        color: #8a5a00 !important;
+    }
+
+    .mensagem-certificado,
+    .data-certificado,
+    .competencias-certificado span {
+        color: #172033 !important;
+    }
 }
 
 .xp-final {

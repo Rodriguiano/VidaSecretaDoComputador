@@ -60,5 +60,20 @@
 
 }
 
+.painel-orientacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    max-width: 850px;
+    margin: 0 auto 30px;
+    padding: 14px 20px;
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    background: var(--card-bg);
+    text-align: left;
+}
 
+.painel-orientacao span { color: var(--texto-secundario); font-size: 14px; }
 

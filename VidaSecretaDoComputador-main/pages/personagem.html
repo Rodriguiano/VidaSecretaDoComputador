@@ -88,6 +88,11 @@
 
                 </p>
 
+                <div class="progresso-dialogo" aria-label="Progresso da explicação">
+                    <div id="barraDialogo"></div>
+                </div>
+                <small id="objetivoDialogo" class="objetivo-dialogo"></small>
+
 
 
 
@@ -134,6 +139,16 @@
 
                 </p>
 
+                <div id="areaAula" class="aula-personagem">
+                    <h3>📚 O que você precisa saber</h3>
+                    <div class="blocos-aula">
+                        <div><strong>O que sou</strong><p id="conceitoPersonagem"></p></div>
+                        <div><strong>Como trabalho</strong><p id="funcionamentoPersonagem"></p></div>
+                        <div><strong>Exemplo no cotidiano</strong><p id="exemploPersonagem"></p></div>
+                        <div><strong>Não confunda</strong><p id="naoConfundaPersonagem"></p></div>
+                    </div>
+                </div>
+
 
                 <button
                     id="btnIniciarQuiz"
@@ -170,11 +185,24 @@
 
                 </h2>
 
+                <div class="quiz-cabecalho">
+                    <span id="nivelBloom" class="badge-bloom">Compreender</span>
+                    <span id="cronometroQuiz" class="cronometro">⏱️ 30s</span>
+                    <button id="btnDica" class="botao-dica" type="button">💡 Dica</button>
+                </div>
+
+                <div class="progresso-pergunta" aria-label="Progresso do desafio">
+                    <div id="barraPergunta"></div>
+                </div>
+
 
 
                 <p id="perguntaQuiz">
 
                 </p>
+
+                <p id="dicaQuiz" class="dica-quiz escondido"></p>
+                <p id="feedbackQuiz" class="feedback-quiz" role="status"></p>
 
 
 
@@ -186,6 +214,13 @@
 
 
                 </div>
+
+                <button
+                    id="btnProximaPergunta"
+                    class="botao-principal escondido"
+                    type="button">
+                    Próxima pergunta
+                </button>
 
 
 
@@ -216,6 +251,8 @@
 
                 </p>
 
+                <div id="resumoAprendizagem" class="resumo-aprendizagem"></div>
+
 
 
                 <button
@@ -227,6 +264,8 @@
 
 
                 </button>
+
+                <button id="btnTentarNovamente" class="botao-principal escondido">🔁 Tentar novamente</button>
 
 
             </div>
@@ -274,6 +313,7 @@
     <script src="../js/personagens.js"></script>
     <script src="../js/dialogos.js"></script>
     <script src="../js/quiz.js"></script>
+    <script src="../js/virus.js"></script>
 
 
 </body>

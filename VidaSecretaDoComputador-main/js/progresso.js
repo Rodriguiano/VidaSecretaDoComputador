@@ -10,7 +10,10 @@ let dadosJogo = {
     xp: 0,
 
 
-    concluidos: []
+    concluidos: [],
+    tentativas: {},
+    melhorPontuacao: 0,
+    nomeAluno: ""
 
 
 };
@@ -37,12 +40,24 @@ function carregarProgresso(){
     if(salvo){
 
 
-        dadosJogo = JSON.parse(salvo);
+        const dadosSalvos = JSON.parse(salvo);
+        dadosJogo = { ...dadosJogo, ...dadosSalvos };
 
-
+        if (!Array.isArray(dadosJogo.concluidos)) dadosJogo.concluidos = [];
+        if (typeof dadosJogo.nomeAluno !== "string") dadosJogo.nomeAluno = "";
     }
 
+    corrigirXP();
 
+}
+
+function corrigirXP() {
+    const missoesValidas = new Set(configuracaoJogo ? configuracaoJogo.personagensOrdem : []);
+    const concluidosValidos = [...new Set(dadosJogo.concluidos)]
+        .filter(id => missoesValidas.has(id));
+    dadosJogo.concluidos = concluidosValidos;
+    dadosJogo.xp = concluidosValidos.length * configuracaoJogo.xpPorMissao;
+    salvarProgresso();
 }
 
 
@@ -134,9 +149,7 @@ function atualizarBloqueios(){
 
 
 
-                card.classList.remove(
-                    "bloqueado"
-                );
+                card.classList.remove("bloqueado");
 
 
 
@@ -213,11 +226,20 @@ function atualizarBloqueios(){
         // COMPONENTES NORMAIS
         // ==============================
 
+        const posicao = configuracaoJogo.personagensOrdem.indexOf(personagem);
+        const anterior = posicao > 0 ? configuracaoJogo.personagensOrdem[posicao - 1] : null;
+        const disponivel = posicao === 0 || dadosJogo.concluidos.includes(anterior);
 
+        if (!disponivel) {
+            card.classList.add("bloqueado");
+            if (status) status.textContent = "🔒 Complete a missão anterior";
+            card.onclick = () => {
+                if (typeof tocarErro === "function") tocarErro();
+            };
+            return;
+        }
 
-        card.classList.remove(
-            "bloqueado"
-        );
+        card.classList.remove("bloqueado");
 
 
 
@@ -392,6 +414,9 @@ function mostrarResultado(acertou){
         "textoResultado"
     );
 
+    const resumo = document.getElementById("resumoAprendizagem");
+    const tentarNovamente = document.getElementById("btnTentarNovamente");
+
 
 
 
@@ -430,8 +455,9 @@ function mostrarResultado(acertou){
 
 
         texto.textContent =
-
-        "Resposta correta! Você ganhou +100 XP e completou essa missão.";
+        "Você mobilizou diferentes níveis de pensamento e concluiu a missão. +100 XP conquistados!";
+        if (resumo) resumo.innerHTML = "<strong>Trilha concluída:</strong> você lembrou conceitos, compreendeu funções e aplicou o conhecimento em desafios.";
+        if (tentarNovamente) tentarNovamente.classList.add("escondido");
 
 
 
@@ -448,10 +474,9 @@ function mostrarResultado(acertou){
 
 
         texto.textContent =
-
-        "Resposta errada. Tente novamente e continue aprendendo!";
-
-
+        "A missão ainda não foi concluída. Revise a curiosidade, consulte a dica e tente novamente.";
+        if (resumo) resumo.innerHTML = "<strong>Estratégia de estudo:</strong> explique o conceito com suas palavras e relacione-o a uma situação real antes de responder.";
+        if (tentarNovamente) tentarNovamente.classList.remove("escondido");
 
     }
 
@@ -460,8 +485,10 @@ function mostrarResultado(acertou){
 
 }
 
-
-
-
-
+const botaoTentarNovamente = document.getElementById("btnTentarNovamente");
+if (botaoTentarNovamente) {
+    botaoTentarNovamente.onclick = () => {
+        if (typeof iniciarQuiz === "function") iniciarQuiz();
+    };
+}
 

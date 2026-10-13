@@ -40,7 +40,7 @@ const temaEngine = {
         this.aplicarTema(novoTema);
         localStorage.setItem(this.storageKey, novoTema);
         
-        // Toca um pequeno efeito sonoro (se somEngine existir)
+     
         if (typeof somEngine !== 'undefined' && !somEngine.mutado && somEngine.ctx) {
             const os = somEngine.ctx.createOscillator();
             const gn = somEngine.ctx.createGain();
@@ -57,7 +57,7 @@ const temaEngine = {
     },
 
     criarBotaoUI() {
-        // Verifica se já existe (pra evitar duplicação)
+    
         if (document.getElementById('btn-tema-global')) return;
 
         // Container flutuante global

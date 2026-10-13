@@ -124,6 +124,11 @@ function mostrarDialogo(){
 
     }
 
+    const barra = document.getElementById("barraDialogo");
+    const objetivo = document.getElementById("objetivoDialogo");
+    if (barra) barra.style.width = `${((etapaDialogo + 1) / personagemAtual.dialogos.length) * 100}%`;
+    if (objetivo) objetivo.textContent = `Explicação ${etapaDialogo + 1} de ${personagemAtual.dialogos.length} • avance para construir o conceito`;
+
     // Se estiver na última fala...
     if(etapaDialogo === personagemAtual.dialogos.length - 1){
 
@@ -266,6 +271,15 @@ function mostrarCuriosidade(){
             "escondido"
         );
 
+        const idPersonagem = Object.keys(personagens).find(chave => personagens[chave] === personagemAtual);
+        const aula = aulasPersonagens[idPersonagem];
+        if (aula) {
+            document.getElementById("conceitoPersonagem").textContent = aula.conceito;
+            document.getElementById("funcionamentoPersonagem").textContent = aula.funcionamento;
+            document.getElementById("exemploPersonagem").textContent = aula.exemplo;
+            document.getElementById("naoConfundaPersonagem").textContent = aula.naoConfunda;
+        }
+
 
     }
 
@@ -294,9 +308,11 @@ if(botaoQuiz){
 
 
     botaoQuiz.onclick = ()=>{
-
-
-        iniciarQuiz();
+        if (personagemAtual && personagemAtual.chefe && typeof iniciarBatalhaVirus === "function") {
+            iniciarBatalhaVirus();
+        } else {
+            iniciarQuiz();
+        }
 
 
     };
@@ -304,5 +320,3 @@ if(botaoQuiz){
 
 
 }
-
-
