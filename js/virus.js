@@ -30,7 +30,9 @@ function iniciarBatalhaVirus() {
 function mostrarPerguntaVirus() {
     const chefe = personagens.virus;
     const listaPerguntas = chefe.perguntasChefe;
-    const perguntaAtual = listaPerguntas[perguntaChefeAtual];
+    const original = listaPerguntas[perguntaChefeAtual];
+    const emb = embaralharAlternativas(original.alternativas, original.correta);
+    const perguntaAtual = { pergunta: original.pergunta, alternativas: emb.alternativas, correta: emb.correta };
 
     const perguntaEl = document.getElementById("perguntaQuiz");
     const area = document.getElementById("alternativasQuiz");
@@ -67,7 +69,7 @@ function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, bota
     if (respostaEscolhida === respostaCorreta) {
         botaoClicado.classList.add("correta");
         const feedback = document.getElementById("feedbackQuiz");
-        if (feedback) feedback.textContent = `✅ ${personagens.virus.perguntasChefe[perguntaChefeAtual].feedback[respostaCorreta]}`;
+        if (feedback) feedback.textContent = "✅ Resposta correta! O Vírus ficou mais fraco.";
         if (typeof tocarSucesso === "function") tocarSucesso();
         acertosChefe++;
     } else {
@@ -76,7 +78,7 @@ function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, bota
             botoes[respostaCorreta].classList.add("correta");
         }
         const feedback = document.getElementById("feedbackQuiz");
-        if (feedback) feedback.textContent = `🔁 ${personagens.virus.perguntasChefe[perguntaChefeAtual].feedback[respostaEscolhida]}`;
+        if (feedback) feedback.textContent = "🔁 Resposta incorreta. A alternativa correta está destacada.";
         if (typeof tocarErro === "function") tocarErro();
     }
 
@@ -108,12 +110,12 @@ function responderVirus(respostaEscolhida, respostaCorreta, totalPerguntas, bota
 function finalizarBatalhaVirus() {
     const totalPerguntas = personagens.virus.perguntasChefe.length;
 
-    if (acertosChefe === totalPerguntas) {
+    if (acertosChefe >= CRITERIOS_JOGO.acertosMinimosChefe) {
         if (typeof tocarVitoria === "function") tocarVitoria();
         window.location.href = "certificado.html";
     } else {
         if (typeof tocarErro === "function") tocarErro();
-        alert(`O Vírus Misterioso resistiu! Você acertou ${acertosChefe} de ${totalPerguntas} perguntas. Revise os componentes no mapa e tente novamente!`);
+        alert(`O Vírus Misterioso resistiu! Você acertou ${acertosChefe} de ${totalPerguntas}. São necessários pelo menos ${CRITERIOS_JOGO.acertosMinimosChefe} acertos. Revise os componentes no mapa e tente novamente!`);
         voltarMapa();
     }
 }

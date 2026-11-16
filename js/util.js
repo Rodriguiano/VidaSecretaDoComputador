@@ -47,24 +47,24 @@ const configuracaoJogo = {
 ===================================================== */
 
 
-function voltarMapa(){
+function voltarMapa() {
 
     if (typeof tocarTransicao === "function") tocarTransicao();
 
     window.location.href =
 
-    "mapa.html";
+        "mapa.html";
 
 
 }
 
-function voltarInicio(){
+function voltarInicio() {
 
     if (typeof tocarTransicao === "function") tocarTransicao();
 
     window.location.href =
 
-    "../index.html";
+        "../index.html";
 
 
 }
@@ -76,16 +76,16 @@ function voltarInicio(){
 
 const botaoMapa =
 
-document.getElementById(
-    "btnVoltarMapa"
-);
+    document.getElementById(
+        "btnVoltarMapa"
+    );
 
 
 
-if(botaoMapa){
+if (botaoMapa) {
 
 
-    botaoMapa.onclick = ()=>{
+    botaoMapa.onclick = () => {
 
 
         voltarMapa();
@@ -96,7 +96,22 @@ if(botaoMapa){
 
 }
 
+const CRITERIOS_JOGO = {
+    acertosMinimosMissao: 2,  // módulo concluído com pelo menos 2 acertos em 3
+    acertosMinimosChefe: 4    // Vírus derrotado com pelo menos 4 acertos em 6
+};
 
+function embaralharAlternativas(alternativas, correta) {
+    const itens = alternativas.map((texto, i) => ({ texto, certa: i === correta }));
+    for (let i = itens.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [itens[i], itens[j]] = [itens[j], itens[i]];
+    }
+    return {
+        alternativas: itens.map(x => x.texto),
+        correta: itens.findIndex(x => x.certa)
+    };
+}
 
 
 

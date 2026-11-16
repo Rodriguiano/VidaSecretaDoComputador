@@ -29,7 +29,7 @@
     margin-bottom: 16px;
 }
 
-.badge-bloom, .cronometro, .botao-dica {
+.badge-bloom, .botao-dica {
     border-radius: 999px;
     padding: 7px 13px;
     font: inherit;
@@ -38,8 +38,6 @@
 }
 
 .badge-bloom { background: rgba(93, 214, 255, .18); color: #8de8ff; }
-.cronometro { background: rgba(255, 255, 255, .1); }
-.cronometro.urgente { background: var(--erro-bg); animation: pulsar .7s infinite; }
 .botao-dica { border: 1px solid var(--card-border); background: transparent; color: inherit; cursor: pointer; }
 .botao-dica:disabled { opacity: .45; cursor: default; }
 .progresso-pergunta { height: 7px; background: rgba(0,0,0,.2); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }

@@ -4,8 +4,6 @@
 
 let perguntaAtualIndice = 0;
 let acertosQuiz = 0;
-let tempoRestante = 45;
-let intervaloQuiz = null;
 
 const niveisBloom = [
     { nome: "Lembrar", emoji: "🧠", explicacao: "recuperar um conceito essencial" },
@@ -37,46 +35,6 @@ function obterPerguntasPersonagem() {
     }];
 }
 
-function iniciarCronometro() {
-    clearInterval(intervaloQuiz);
-    tempoRestante = perguntaAtualIndice === 0 ? 30 : 45;
-    atualizarCronometro();
-    intervaloQuiz = setInterval(() => {
-        tempoRestante--;
-        atualizarCronometro();
-        if (tempoRestante <= 0) {
-            clearInterval(intervaloQuiz);
-            const feedback = document.getElementById("feedbackQuiz");
-            if (feedback) feedback.textContent = "⏱️ O tempo acabou. Revise a explicacao e avance quando estiver pronto.";
-            document.querySelectorAll("#alternativasQuiz .alternativa").forEach(botao => botao.disabled = true);
-            mostrarFeedbackPergunta(obterPerguntasPersonagem()[perguntaAtualIndice], -1);
-            const botaoProxima = document.getElementById("btnProximaPergunta");
-            if (botaoProxima) {
-                botaoProxima.textContent = perguntaAtualIndice + 1 < obterPerguntasPersonagem().length
-                    ? "Próxima pergunta"
-                    : "Ver resultado";
-                botaoProxima.classList.remove("escondido");
-                botaoProxima.onclick = () => {
-                    perguntaAtualIndice++;
-                    if (perguntaAtualIndice < obterPerguntasPersonagem().length) {
-                        mostrarPergunta();
-                    } else {
-                        mostrarResultado(false);
-                    }
-                };
-            }
-        }
-    }, 1000);
-}
-
-function atualizarCronometro() {
-    const elemento = document.getElementById("cronometroQuiz");
-    if (elemento) {
-        elemento.textContent = `⏱️ ${tempoRestante}s`;
-        elemento.classList.toggle("urgente", tempoRestante <= 5);
-    }
-}
-
 function mostrarPergunta() {
     const perguntaEl = document.getElementById("perguntaQuiz");
     const alternativasEl = document.getElementById("alternativasQuiz");
@@ -89,7 +47,9 @@ function mostrarPergunta() {
     }
 
     const listaPerguntas = obterPerguntasPersonagem();
-    const q = listaPerguntas[perguntaAtualIndice];
+    const original = listaPerguntas[perguntaAtualIndice];
+    const emb = embaralharAlternativas(original.alternativas, original.correta);
+    const q = { pergunta: original.pergunta, alternativas: emb.alternativas, correta: emb.correta };
     const nivel = niveisBloom[Math.min(perguntaAtualIndice + 1, niveisBloom.length - 1)];
     const nivelEl = document.getElementById("nivelBloom");
     if (nivelEl) nivelEl.textContent = `${nivel.emoji} ${nivel.nome}`;
@@ -108,7 +68,6 @@ function mostrarPergunta() {
         alternativasEl.appendChild(botao);
     });
     configurarDica(q);
-    iniciarCronometro();
 }
 
 function configurarDica(pergunta) {
@@ -124,7 +83,6 @@ function configurarDica(pergunta) {
 }
 
 function verificarRespostaMultipla(respostaEscolhida, respostaCorreta, totalPerguntas, botaoClicado, containerAlternativas) {
-    clearInterval(intervaloQuiz);
     const botoes = containerAlternativas.querySelectorAll(".alternativa");
     botoes.forEach(b => b.disabled = true);
     const feedback = document.getElementById("feedbackQuiz");
@@ -151,7 +109,7 @@ function verificarRespostaMultipla(respostaEscolhida, respostaCorreta, totalPerg
             perguntaAtualIndice++;
             if (perguntaAtualIndice < totalPerguntas) {
                 mostrarPergunta();
-            } else if (acertosQuiz === totalPerguntas) {
+            } else if (acertosQuiz >= Math.min(CRITERIOS_JOGO.acertosMinimosMissao, totalPerguntas)) {
                 finalizarMissao();
             } else {
                 mostrarResultado(false);
@@ -161,7 +119,7 @@ function verificarRespostaMultipla(respostaEscolhida, respostaCorreta, totalPerg
         perguntaAtualIndice++;
         if (perguntaAtualIndice < totalPerguntas) {
             mostrarPergunta();
-        } else if (acertosQuiz === totalPerguntas) {
+        } else if (acertosQuiz >= Math.min(CRITERIOS_JOGO.acertosMinimosMissao, totalPerguntas)) {
             finalizarMissao();
         } else {
             mostrarResultado(false);
